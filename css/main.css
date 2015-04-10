@@ -152,6 +152,24 @@ p
   background-color: #ecf0f1;
 }
 
+.row
+{
+  margin-right: -15px;
+margin-left: -15px;
+display: block;
+}
+
+.col
+{
+  width: 50%;
+  float: left;
+}
+
+.container
+{
+padding:40px;
+width: 800px;
+}
 
 #gamecontainer
 {
@@ -204,12 +222,12 @@ p
 
 #forward
 {
-  position: fixed;
   margin: 20px;
 }
 
 #exitbt
 {
+  text-align: center;
   display:block;
   background-color: #2ecc71;
   padding: 10px;

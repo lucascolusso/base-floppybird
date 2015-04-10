@@ -5,10 +5,29 @@
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
       <meta name="author" content="Nebez Briefkani" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+      <script src="popup.js"></script>
+      <link href="css/popup.css" rel="stylesheet" />
       <link href="css/reset.css" rel="stylesheet">
       <link href="css/main.css" rel="stylesheet">
    </head>
    <body>
+
+     <!-- Modal -->
+     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+           </div>
+           <div class="modal-body">
+            Experience level
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-primary">Send</button>
+           </div>
+         </div>
+       </div>
+     </div>
 
       <div id="gamecontainer">
          <div id="gamescreen">
@@ -30,8 +49,7 @@
         <div id="bigscore"></div>
         <hr>
         <div id="replay">
-          Start a new round by pressing <b>Spacebar</b><br/>
-          or clicking the <b>Restart game</b> button bellow.
+          Start a new round by clicking the <b>Restart game</b> button bellow.
           <br/>
           <br/>
           <a href="index.html" id="restartbt">Restart game</a>
