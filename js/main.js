@@ -453,10 +453,11 @@ function showScore()
       //When the animation is done, animate in the replay button and SWOOSH!
       soundSwoosh.stop();
       soundSwoosh.play();
-      $("#replay").transition({ y: '0px', opacity: 1}, 600, 'ease');
+
    });
 
    //show the replay button and make it clickable
+   $("#replay").transition({ y: '0px', opacity: 1}, 600, 'ease');
    $(".replay").css({opacity: 0 });
    replayclickable = true;
 }
