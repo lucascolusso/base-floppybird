@@ -9,21 +9,64 @@
       <link href="css/popup.css" rel="stylesheet" />
       <link href="css/reset.css" rel="stylesheet">
       <link href="css/main.css" rel="stylesheet">
-   </head>
-   <body>
+      <link href="css/popup.css" rel="stylesheet">
 
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+   </head>
+
+   <body>
      <!-- Modal -->
      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
        <div class="modal-dialog">
          <div class="modal-content">
            <div class="modal-header">
-             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+             <h4 class="modal-title" id="myModalLabel">Please select your level of Flappy Bird gaming experience:</h4>
            </div>
            <div class="modal-body">
-            Experience level
+            <div class="radio">
+              <table >
+                <tr>
+                  <th>
+                    <label class="radio-inline text-center">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
+                      <br/>Zero experienced
+                    </label>
+                  </th>
+                  <th>
+                    <label class="radio-inline text-center">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
+                      <br/>
+                      Some experience
+                    </label>
+                  </th>
+                  <th>
+                    <label class="radio-inline text-center">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3">
+                      <br/>
+                      Moderately experienced
+                    </label>
+                  </th>
+                  <th>
+                    <label class="radio-inline text-center">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4">
+                      <br/>
+                      More than average experience
+                    </label>
+                  </th>
+                  <th>
+                    <label class="radio-inline text-center">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5">
+                      <br/>
+                      Very experienced
+                    </label>
+                  </th>
+                </tr>
+              </table>
+            </div>
            </div>
            <div class="modal-footer">
-             <button type="button" class="btn btn-primary">Send</button>
+             <button type="button" class="btn btn-primary" id="experience">Send answer and go to game</button>
            </div>
          </div>
        </div>
@@ -52,7 +95,7 @@
           Start a new round by clicking the <b>Restart game</b> button bellow.
           <br/>
           <br/>
-          <a href="index.html" id="restartbt">Restart game</a>
+          <a href="#" id="restartbt">Restart game</a>
         </div>
         <div id="forward">
            <a id="exitbt">Exit game</a>
@@ -64,6 +107,14 @@
       <script src="js/jquery.transit.min.js"></script>
       <script src="js/buzz.min.js"></script>
       <script src="js/main.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <!---<script src="js/popup.js"></script>-->
+
+      <script type="text/javascript">
+          $(window).load(function(){
+              $('#myModal').modal('show');
+          });
+      </script>
 
    </body>
 </html>

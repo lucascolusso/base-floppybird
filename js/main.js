@@ -14,6 +14,7 @@ var end_reflect = 0;
 var time_played = 0;
 var time_reflected = 0;
 var user_id = uid();
+var experience = -1;
 
 //game settings
 var debugmode = false;
@@ -49,14 +50,6 @@ buzz.all().setVolume(volume);
 var loopGameloop;
 var loopPipeloop;
 
-function Assignment () {
-    var condition=Math.floor(Math.random()*5);
-    console.log(condition);
-    alert(condition);
-    alert("test");
-    alert('test');
-};
-
 $(document).ready(function() {
    if(window.location.search == "?debug")
       debugmode = true;
@@ -68,7 +61,7 @@ $(document).ready(function() {
    if(savedscore != "")
       highscore = parseInt(savedscore);
 
-   socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition });
+   socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition, experience:experience });
    //start with the splash screen
    showSplash();
 });
@@ -411,6 +404,10 @@ function showScore()
 
      // social comparison feedback routing
 
+     function Assignment () {
+         var condition=Math.floor(Math.random()*5);
+     };
+
      switch(condition) {
       case 1:
           //variables
@@ -458,7 +455,6 @@ function showScore()
 
    //show the replay button and make it clickable
    $("#replay").transition({ y: '0px', opacity: 1}, 600, 'ease');
-   $(".replay").css({opacity: 0 });
    replayclickable = true;
 }
    $("#replay").click(function() {
@@ -472,10 +468,8 @@ function showScore()
    soundSwoosh.stop();
    soundSwoosh.play();
 
-   //fade out the scoreboard
-   $(".scoreboard").transition({ }, 1000, 'ease', function() {
-      //when that's done, display us back to nothing
-      $("#replay").css("opacity: 0");
+   //fade out restart
+   $("#replay").transition({ y: '0px', opacity: 0}, 600, 'ease', function() {
 
       end_reflect = new Date();
       sendscore();
@@ -510,6 +504,11 @@ function updatePipes()
    pipes.push(newpipe);
 }
 
+$("#experience").click(function() {
+   experience = this.value;
+   $('#myModal').modal('hide');
+});
+
 $("#forward").click(function() {
    end_reflect = new Date();
    sendscore();
@@ -527,10 +526,8 @@ function sendscore() {
    if(end_reflect != 0 && end_play != 0) {
       time_reflected += end_reflect - end_play;
    }
-   socket.emit('update', { user_id:user_id, rounds:round, time_played:time_played, time_reflected:time_reflected, condition:condition });
+   socket.emit('update', { user_id:user_id, rounds:round, time_played:time_played, time_reflected:time_reflected, condition:condition, experience:experience });
 }
-
-
 
 // incompatibility
 var isIncompatible = {
