@@ -505,7 +505,8 @@ function updatePipes()
 }
 
 $("#experience").click(function() {
-   experience = this.value;
+   experience = document.getElementById("myForm").value;
+   alert(experience);
    $('#myModal').modal('hide');
 });
 
