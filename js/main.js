@@ -504,18 +504,19 @@ function updatePipes()
    pipes.push(newpipe);
 }
 
+//getting experience from the modal form
 $("#experience").click(function() {
   var radios = document.getElementsByName('inlineRadioOptions');
   for (var i = 0, length = radios.length; i < length; i++) {
       if (radios[i].checked) {
-          experience = radios[i].value;
-          alert(experience);
+          experience = 1*radios[i].value;
           break;
       }
   }
    $('#myModal').modal('hide');
 });
 
+//I'm done with the game, take me to the final survey!
 $("#forward").click(function() {
    end_reflect = new Date();
    sendscore();
