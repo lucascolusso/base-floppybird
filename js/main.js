@@ -505,8 +505,14 @@ function updatePipes()
 }
 
 $("#experience").click(function() {
-   experience = document.getElementById("myForm").value;
-   alert(experience);
+  var radios = document.getElementsByName('inlineRadioOptions');
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+          experience = radios[i].value;
+          alert(experience);
+          break;
+      }
+  }
    $('#myModal').modal('hide');
 });
 
