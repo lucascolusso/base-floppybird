@@ -8,16 +8,16 @@
       <script src="popup.js"></script>
       <link href="css/popup.css" rel="stylesheet" />
       <link href="css/reset.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
       <link href="css/main.css" rel="stylesheet">
       <link href="css/popup.css" rel="stylesheet">
-
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
    </head>
 
    <body>
      <!-- Modal -->
-     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
        <div class="modal-dialog">
          <div class="modal-content">
            <div class="modal-header">
@@ -110,11 +110,15 @@
       <script src="js/buzz.min.js"></script>
       <script src="js/main.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-      <!---<script src="js/popup.js"></script>-->
 
       <script type="text/javascript">
           $(window).load(function(){
+              $('#myModal').modal({
+                keyboard: false,
+                backdrop: 'static',
+              })
               $('#myModal').modal('show');
+
           });
       </script>
 

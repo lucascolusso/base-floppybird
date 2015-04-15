@@ -1,3 +1,4 @@
-.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
-  margin-left: -20px;
+.modal-backdrop {
+   background-color: #2ecc71;
+   opacity: 1.0 !important;
 }
