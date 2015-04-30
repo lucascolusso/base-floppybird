@@ -21,7 +21,8 @@ var debugmode = false;
 var states = Object.freeze({
    SplashScreen: 0,
    GameScreen: 1,
-   ScoreScreen: 2
+   ScoreScreen: 2,
+   Survey: 3
 });
 
 var currentstate;
@@ -97,6 +98,10 @@ function uid () {
 function showSplash()
 {
    currentstate = states.SplashScreen;
+
+   //setting cookies
+   setCookie( "user_id", user_id, 999 );
+   setCookie( "condition", condition, 999 );
 
    //set the defaults (again)
    velocity = 0;
@@ -261,7 +266,7 @@ $(document).keydown(function(e){
       if(currentstate == states.ScoreScreen)
          $("#replay").click();
       else
-         screenClick();
+        screenClick();
    }
 });
 
@@ -381,20 +386,16 @@ function showScore()
 {
    //unhide us
    $(".scoreboard").css("display", "block");
-
    lastScore = score;
-
    round++;
    end_play = new Date();
 
-   //have they beaten their high score?
+   //have they beaten the high score?
    if(score > highscore)
    {
       //yeah!
       highscore = score;
-      //save it!
       setCookie("highscore", highscore, 999);
-      $("#replay").hide();
    }
    else
    {
@@ -402,82 +403,79 @@ function showScore()
      setSmallScore();
      setHighScore();
 
-     // social comparison feedback routing
-
-     function Assignment () {
-         var condition=Math.floor(Math.random()*5);
-     };
-
-     switch(condition) {
-      case 1:
-          //variables
-          highscore = 75;
-
-          setBarNotSkewed();
-          break;
-      case 2:
-          //variables
-          highscore = 75;
-
-          setBarNotSkewed();
-          break;
-      case 3:
-          //variables
-          highscore = 75;
-
-          setBarSkewed();
-          break;
-      case 4:
-          //variables
-          highscore = 75;
-
-          setBarSkewed();
-          break;
-      case 5:
-          //variables
-          highscore = 75;
-
-          //setTrend();
-          break;
-     }
-
-   //SWOOSH!
-   soundSwoosh.stop();
-   soundSwoosh.play();
-
-   $(".scoreboard").css({opacity: 0 }); //move it down so we can slide it up
-   $(".scoreboard").transition({ y: '0px', opacity: 1}, 600, 'ease', function() {
-      //When the animation is done, animate in the replay button and SWOOSH!
-      soundSwoosh.stop();
-      soundSwoosh.play();
-
-   });
-
-   //show the replay button and make it clickable
-   $("#replay").transition({ y: '0px', opacity: 1}, 600, 'ease');
-   replayclickable = true;
-}
-   $("#replay").click(function() {
-     //make sure we can only click once
-     if(!replayclickable)
-        return;
-     else
-        replayclickable = false;
+    // social comparison feedback routing
+    //  function Assignment () {
+    //      var condition=Math.floor(Math.random()*5);
+    //
+    //  switch(condition) {
+    //   case 1:
+    //       variables
+    //        highscore = 75;
+    //
+    //       setBarNotSkewed();
+    //       break;
+    //   case 2:
+    //       variables
+    //       highscore = 75;
+    //
+    //       setBarNotSkewed();
+    //       break;
+    //   case 3:
+    //       variables
+    //       highscore = 75;
+    //
+    //       setBarSkewed();
+    //       break;
+    //   case 4:
+    //       variables
+    //       highscore = 75;
+    //
+    //       setBarSkewed();
+    //       break;
+    //   case 5:
+    //       variables
+    //       highscore = 75;
+    //
+    //       setTrend();
+    //       break;
+    //   }
+    // };
 
    //SWOOSH!
    soundSwoosh.stop();
    soundSwoosh.play();
 
-   //fade out restart
-   $("#replay").transition({ y: '0px', opacity: 0}, 600, 'ease', function() {
+   $(".scoreboard").css({opacity: 0 });
+   $(".scoreboard").transition({ y: '0px', opacity: 1}, 600, 'ease', function()
+        {
+            //When the animation is done, animate in the replay button and SWOOSH!
+            soundSwoosh.stop();
+            soundSwoosh.play();
+         });
+    }
+        //show the replay button and make it clickable
+        $("#replay").transition({ y: '0px', opacity: 1}, 600, 'ease');
+           replayclickable = true;
+        $("#replay").click(function() {
+         //make sure we can only click once
+         if(!replayclickable)
+            return;
+         else
+            replayclickable = false;
 
-      end_reflect = new Date();
-      sendscore();
-      //start the game over!
-      showSplash();
-   });
-});
+           //SWOOSH!
+           soundSwoosh.stop();
+           soundSwoosh.play();
 
+           //fade out restart
+           $("#replay").transition({ y: '0px', opacity: 0}, 600, 'ease', function()
+           {
+              end_reflect = new Date();
+              sendscore();
+              //start the game over!
+              showSplash();
+           });
+        });
 }
 
 function playerScore()
@@ -514,13 +512,14 @@ $("#experience").click(function() {
       }
   }
    $('#myModal').modal('hide');
+   currentstate = states.SplashScreen;
 });
 
 //I'm done with the game, take me to the final survey!
 $("#forward").click(function() {
    end_reflect = new Date();
    sendscore();
-   window.location.href = "./post.html";
+   window.location.href = "./post.html?user_id="+user_id+"&condition="+condition;
 });
 
 function sendscore() {
