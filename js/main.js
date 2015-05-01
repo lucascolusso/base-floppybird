@@ -33,13 +33,13 @@ var velocity = 20;
 var position = 100;
 var rotation = 20;
 var jump = -3.3;
-var pipeheight = 100; // not sure but I think it's variability of the gap position
-var pipewidth = 40; //pipes gap opening
+var pipeheight = 100;     // not sure but I think it's variability of the gap position
+var pipewidth = 40;       // pipes gap opening size
 var pipes = new Array();
 var replayclickable = false;
 
 //sounds
-var volume = 10;
+var volume = 2;
 var soundJump = new buzz.sound("assets/sounds/sfx_wing.ogg");
 var soundScore = new buzz.sound("assets/sounds/sfx_point.ogg");
 var soundHit = new buzz.sound("assets/sounds/sfx_hit.ogg");
@@ -99,10 +99,6 @@ function showSplash()
 {
    currentstate = states.SplashScreen;
 
-   //setting cookies
-   setCookie( "user_id", user_id, 999 );
-   setCookie( "condition", condition, 999 );
-
    //set the defaults (again)
    velocity = 0;
    position = 180;
@@ -124,7 +120,10 @@ function showSplash()
    $(".animated").css('-webkit-animation-play-state', 'running');
 
    //fade in the splash
-   $("#splash").transition({ opacity: 1 }, 2000, 'ease');
+   $("#splash").transition({ opacity: 1 }, 1000, 'ease');
+
+   //fade out exit
+   $("#forward").transition({ opacity: 0 }, 0, 'ease');
 }
 
 function startGame()
@@ -146,9 +145,9 @@ function startGame()
    }
 
    //start up our loops
-   var updaterate = 1000.0 / 60.0 ; //60 times a second
+   var updaterate = 1000.0 / 60.0 ;                   //60 times a second
    loopGameloop = setInterval(gameloop, updaterate);
-   loopPipeloop = setInterval(updatePipes, 1400);
+   loopPipeloop = setInterval(updatePipes, 1400);     //distance between pipes
 
    //jump from the start!
    playerJump();
@@ -244,7 +243,6 @@ function gameloop() {
          return;
       }
    }
-
 
    //have we passed the imminent danger?
    if(boxleft > piperight)
@@ -453,6 +451,12 @@ function showScore()
             soundSwoosh.play();
          });
     }
+
+        // show the exit button and make it clickable
+        $("#forward").transition({ opacity: 1 }, 600, 'ease');
+
+        // exit actions
+
         //show the replay button and make it clickable
         $("#replay").transition({ y: '0px', opacity: 1}, 600, 'ease');
            replayclickable = true;
@@ -516,10 +520,16 @@ $("#experience").click(function() {
 });
 
 //I'm done with the game, take me to the final survey!
+
 $("#forward").click(function() {
-   end_reflect = new Date();
-   sendscore();
-   window.location.href = "./post.html?user_id="+user_id+"&condition="+condition;
+  if(currentstate == states.ScoreScreen) {
+    end_reflect = new Date();
+    sendscore();
+    window.location.href = "./post.html?user_id="+user_id+"&condition="+condition;
+  }
+  else{
+    //nothing
+  }
 });
 
 function sendscore() {

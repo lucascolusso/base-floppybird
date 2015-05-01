@@ -134,11 +134,14 @@ body
 h1{
   font-size: 24px;
   padding-bottom: 10px;
+  line-height:32px;
 }
 
 h2{
-  font-size: 18px;
+  font-size: 21px;
   padding-bottom: 10px;
+  line-height:32px;
+  color:#18b259;
 }
 
 p
@@ -150,25 +153,34 @@ p
 #nogame
 {
   background-color: #ecf0f1;
+  overflow: auto;
 }
 
 .row
 {
-  margin-right: -15px;
-margin-left: -15px;
-display: block;
+  display: block;
+  padding: 30px 0 30px 0;
+  margin-top: 10px;
 }
 
+.box
+{
+  background-color: #dadada;
+  border: 1px solid #b5b5b5;
+  padding: 15px;
+}
 .col
 {
   width: 50%;
   float: left;
+  position: relative;
 }
 
 .container
 {
-padding:40px;
-width: 800px;
+  padding:40px;
+  width: 800px;
+  margin: 0 auto;
 }
 
 #gamecontainer
@@ -213,6 +225,8 @@ width: 800px;
   border: 0px;
   text-decoration:none;
   border-bottom: 3px solid #d15b3f;
+  width: 300px;
+  margin: 0 auto;
 }
 
 #restartbt:hover {
@@ -222,7 +236,8 @@ width: 800px;
 
 #forward
 {
-  margin: 20px;
+  margin: 20px auto;
+  width: 300px;
 }
 
 #exitbt
