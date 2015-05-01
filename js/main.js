@@ -36,6 +36,7 @@ var jump = -3.3;
 var pipeheight = 100;     // not sure but I think it's variability of the gap position
 var pipewidth = 40;       // pipes gap opening size
 var pipes = new Array();
+
 var replayclickable = false;
 
 //sounds
@@ -132,7 +133,7 @@ function startGame()
 
    //fade out the splash
    $("#splash").stop();
-   $("#splash").transition({ opacity: 0 }, 500, 'ease');
+   $("#splash").transition({ opacity: 0 }, 50, 'ease');
 
    //update the big score
    setBigScore();
@@ -145,7 +146,7 @@ function startGame()
    }
 
    //start up our loops
-   var updaterate = 1000.0 / 60.0 ;                   //60 times a second
+   var updaterate = 1000.0 / 60.0 ;                 //60 times a second, speed of the game
    loopGameloop = setInterval(gameloop, updaterate);
    loopPipeloop = setInterval(updatePipes, 1400);     //distance between pipes
 
@@ -156,7 +157,7 @@ function startGame()
 function updatePlayer(player)
 {
    //rotation
-   rotation = Math.min((velocity / 10) * 90, 90);
+   rotation = Math.min((velocity / 100) * 90, 90);
 
    //apply rotation and position
    $(player).css({ rotate: rotation, top: position });
@@ -491,6 +492,7 @@ function playerScore()
    setBigScore();
 }
 
+//beginning earlier is not here
 function updatePipes()
 {
    //Do any pipes need removal?
