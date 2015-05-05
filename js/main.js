@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:9999');
+var socket = io.connect('http://127.0.0.1:9999');
 var condition = -1;
 
 //scores
