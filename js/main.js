@@ -527,7 +527,7 @@ $("#forward").click(function() {
   if(currentstate == states.ScoreScreen) {
     end_reflect = new Date();
     sendscore();
-    window.location.href = "./post.html?user_id="+user_id+"&condition="+condition;
+    window.location.href = "./post.html?user_id="+user_id+"&condition="+condition+"&experience="+experience;
   }
   else{
     //nothing

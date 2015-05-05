@@ -15,10 +15,11 @@ function getUrlVars() {
 function writeVars() {
 	var first = getUrlVars()["user_id"];
 	var second = getUrlVars()["condition"];
+  var third = getUrlVars()["experience"];
 
   document.write("<div class='container'");
   document.write("<br/>");
-  document.write("<iframe src='http://www.surveygizmo.com/s3/2082546/survey?user_id="+first+"&condition="+second+"' frameborder='0' width='700' height='500' style='overflow:hidden; border:1px solid black' scrolling='yes'></iframe>");
+  document.write("<iframe src='http://www.surveygizmo.com/s3/2082546/survey?user_id="+first+"&condition="+second+"&experience="+third+"' frameborder='0' width='700' height='500' style='overflow:hidden; border:1px solid black' scrolling='yes'></iframe>");
   document.write("</div>");
 }
 
