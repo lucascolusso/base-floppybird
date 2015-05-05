@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:9999');
+var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
 var condition = -1;
 
 //scores
