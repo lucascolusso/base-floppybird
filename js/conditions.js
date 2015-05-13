@@ -10,7 +10,7 @@ var leader = xp3;
 var userFeedback = '';
 var userCondition = function() {};
 var leaderBarColor = '#D1D1D1';
-var userBarColor = '#7cb5ec';
+var userBarColor = '#f8704f';
 var showHistoryFeedback = true;
 
 var conditions;
@@ -24,15 +24,15 @@ conditions = {
       xAxis: { type: 'category' },
       yAxis: {
         title: { text: 'Score' },
+        labels: { overflow: 'justify' },
         gridLineWidth: 0,
-        minorGridLineWidth: 0,
-        labels: { enabled: false }
+        minorGridLineWidth: 0
       },
-      series: [{ 
+      series: [{
         name: 'Score',
         colorByPoint: true,
         data: [
-          { name: 'You', color: userBarColor, y: score }, 
+          { name: 'You', color: userBarColor, y: score },
           { name: 'Leader', color: leaderBarColor, y: targetScore }
         ],
         dataLabels: { enabled: true, style: { fontSize: '13px' } }
@@ -46,17 +46,23 @@ conditions = {
       legend: { enabled: false },
       credits: { enabled: false },
       xAxis: { categories: ['You', 'Leader'] },
-      yAxis: { min: 0, title: { text: 'Score' }, labels: { overflow: 'justify' } },
-      series: [{ 
+      yAxis: {
+        min: 0,
+        title: { text: 'Score' },
+        labels: { overflow: 'justify' },
+        gridLineWidth: 0,
+        minorGridLineWidth: 0
+        },
+      series: [{
         name: 'Score', colorByPoint: true,
         data: [
         {
-          name: score.toString(), color: userBarColor, y: (targetScore/2) + score, 
+          name: score.toString(), color: userBarColor, y: ((targetScore/2) + (score*0.5)),
           dataLabels: {
             enabled: true, style: { fontSize: '13px' },
             formatter: function() { return score; }
           }
-        }, 
+        },
         {
           name: targetScore, color: leaderBarColor, y: targetScore,
           dataLabels: {
@@ -70,7 +76,7 @@ conditions = {
   },
   history: function() {
     if(showHistoryFeedback) {
-      userFeedback = 'These are the scores of your last 5 rounds!';
+      userFeedback = 'These are your last 5 rounds scores.';
     }
     last5 = userScores.getLast(5);
     chartBars = [];
@@ -84,8 +90,14 @@ conditions = {
       legend: { enabled: false },
       credits: { enabled: false },
       xAxis: { type: 'category' },
-      yAxis: { min: 0, title: { text: 'Score' }, labels: { overflow: 'justify' } },
-      series: [{ 
+      yAxis: {
+        min: 0,
+        title: { text: 'Score' },
+        labels: { overflow: 'justify' },
+        gridLineWidth: 0,
+        minorGridLineWidth: 0
+        },
+      series: [{
         name: 'Score',
         colorByPoint: true,
         data: chartBars,
