@@ -85,6 +85,16 @@
       <div id="rightpanel">
         <div id="bigscore"></div>
         <hr>
+<div id="scoreboard">
+         <div id="currentscore"></div>
+         <div id="highscore"></div>
+        
+         <div id="feedback-chart" style="height: 205px;"></div>
+       </div>
+       <div id="leader-feedback">
+         inject feedback. inject feedback. inject feedback.
+         inject feedback. inject feedback.
+       </div>
         <div id="replay">
           Start a new round by clicking the <b>Play again</b> button bellow.
           <br/>
@@ -101,8 +111,12 @@
       <script src="js/jquery.min.js"></script>
       <script src="js/jquery.transit.min.js"></script>
       <script src="js/buzz.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/assignment.js"></script>
+      <script src="js/conditions.js"></script>
+      <script src="js/userScores.js"></script>
       <script src="js/main.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <script src="http://code.highcharts.com/highcharts.js"></script>
       <script type="text/javascript">
           $(window).load(function()
           {
@@ -114,6 +128,7 @@
                 backdrop: 'static',
               })
               $('#myModal').modal('show');
+
           });
       </script>
    </body>

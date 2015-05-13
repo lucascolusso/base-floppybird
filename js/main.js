@@ -2,12 +2,13 @@
 var socket = io.connect('http://localhost:9999');
 // server routing
 //var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
+
+//if there's no randomization of assignment, condition will be set as -1
 var condition = -1;
 
 //scores
 var score = 0;
-var highscore = 0;
-var similarscore = 0;
+var highscore = -1;
 
 var lastScore = 0;
 var round = 0;
@@ -56,19 +57,24 @@ var loopGameloop;
 var loopPipeloop;
 
 $(document).ready(function() {
-   if(window.location.search == "?debug")
-      debugmode = true;
-   if(window.location.search == "?easy")
-      pipeheight = 200;
+  if(window.location.search == "?debug")
+    debugmode = true;
+  if(window.location.search == "?easy")
+    pipeheight = 200;
 
-   //get the highscore
-   var savedscore = getCookie("highscore");
-   if(savedscore != "")
-      highscore = parseInt(savedscore);
+  //get the highscore
+  var savedscore = getCookie("highscore");
+  if(savedscore != "")
+    highscore = parseInt(savedscore);
 
-   socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition, experience:experience });
-   //start with the splash screen
-   showSplash();
+  condition = Math.floor(Math.random()*5);
+
+
+  //starts new row in the database
+  socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition, experience:experience });
+
+  //start with the splash screen
+  showSplash();
 });
 
 function getCookie(cname)
@@ -124,10 +130,7 @@ function showSplash()
    $(".animated").css('-webkit-animation-play-state', 'running');
 
    //fade in the splash
-   $("#splash").transition({ opacity: 1 }, 1000, 'ease');
-
-   //fade out exit
-   $("#forward").transition({ opacity: 0 }, 0, 'ease');
+   $("#splash").transition({ opacity: 1 }, 100, 'ease');
 }
 
 function startGame()
@@ -136,7 +139,7 @@ function startGame()
 
    //fade out the splash
    $("#splash").stop();
-   $("#splash").transition({ opacity: 0 }, 50, 'ease');
+   $("#splash").transition({ opacity: 0 }, 100, 'ease');
 
    //update the big score
    setBigScore();
@@ -330,21 +333,6 @@ function setHighScore()
       elemscore.append("<img src='assets/font_small_" + digits[i] + ".png' alt='" + digits[i] + "'>");
 }
 
-function setBarNotSkewed()
-{
-  var barheight = 0;
-  barheight = (( score * 178 ) / highscore);
-  $("#participant").css({height: barheight }); // set the bar height with the right proportion
-}
-
-function setBarSkewed()
-{
-  var barheighttop = 0;
-  var barheight = 0;
-  adjusted_height = (106.8) + ((178*0.4)*(score/highscore));
-  $("#participant").css({height: adjusted_height }); // set the bar height with the right proportion
-}
-
 function playerDead()
 {
    //stop animating everything!
@@ -366,6 +354,11 @@ function playerDead()
    loopGameloop = null;
    loopPipeloop = null;
 
+   // save the user score.
+   userScores.add(score);
+   conditions.userLeader();
+   // Execute the experimental condition
+   userCondition();
    //mobile browsers don't support buzz bindOnce event
    if(isIncompatible.any())
    {
@@ -387,7 +380,7 @@ function playerDead()
 function showScore()
 {
    //unhide us
-   $(".scoreboard").css("display", "block");
+   $("#scoreboard").css("display", "block");
    lastScore = score;
    round++;
    end_play = new Date();
@@ -397,6 +390,7 @@ function showScore()
    {
       //yeah!
       highscore = score;
+      //save it!
       setCookie("highscore", highscore, 999);
    }
    else
@@ -404,87 +398,59 @@ function showScore()
      //update the scoreboard
      setSmallScore();
      setHighScore();
-
-    // social comparison feedback routing
-    //  function Assignment () {
-    //      var condition=Math.floor(Math.random()*5);
-    //
-    //  switch(condition) {
-    //   case 1:
-    //       variables
-    //        highscore = 75;
-    //
-    //       setBarNotSkewed();
-    //       break;
-    //   case 2:
-    //       variables
-    //       highscore = 75;
-    //
-    //       setBarNotSkewed();
-    //       break;
-    //   case 3:
-    //       variables
-    //       highscore = 75;
-    //
-    //       setBarSkewed();
-    //       break;
-    //   case 4:
-    //       variables
-    //       highscore = 75;
-    //
-    //       setBarSkewed();
-    //       break;
-    //   case 5:
-    //       variables
-    //       highscore = 75;
-    //
-    //       setTrend();
-    //       break;
-    //   }
-    // };
+    };
 
    //SWOOSH!
    soundSwoosh.stop();
    soundSwoosh.play();
 
-   $(".scoreboard").css({opacity: 0 });
-   $(".scoreboard").transition({ y: '0px', opacity: 1}, 600, 'ease', function()
-        {
+   //show the scoreboard
+   $("#scoreboard").css({ y: '10px', opacity: 0 }); //move it down so we can slide it up
+   $("#replay").css({ y: '10px', opacity: 0 });
+   $("#scoreboard").transition({ y: '0px', opacity: 1}, 100, 'ease', function(){
             //When the animation is done, animate in the replay button and SWOOSH!
             soundSwoosh.stop();
             soundSwoosh.play();
+            $("#replay").transition({ y: '0px', opacity: 1}, 100, 'ease');
          });
-    }
+
+        // show feedback
+        $("#text-feedback").css({opacity: 1 }, 100, 'ease');
 
         // show the exit button and make it clickable
-        $("#forward").transition({ opacity: 1 }, 600, 'ease');
+        $("#forward").transition({ opacity: 1 }, 100, 'ease');
 
-        // exit actions
-
-        //show the replay button and make it clickable
-        $("#replay").transition({ y: '0px', opacity: 1}, 600, 'ease');
-           replayclickable = true;
-        $("#replay").click(function() {
-         //make sure we can only click once
-         if(!replayclickable)
-            return;
-         else
-            replayclickable = false;
-
-           //SWOOSH!
-           soundSwoosh.stop();
-           soundSwoosh.play();
-
-           //fade out restart
-           $("#replay").transition({ y: '0px', opacity: 0}, 600, 'ease', function()
-           {
-              end_reflect = new Date();
-              sendscore();
-              //start the game over!
-              showSplash();
-           });
-        });
+        replayclickable = true;
 }
+
+$("#replay").click(function() {
+  //make sure we can only click once
+  if(!replayclickable)
+    return;
+  else
+    replayclickable = false;
+  //SWOOSH!
+  soundSwoosh.stop();
+  soundSwoosh.play();
+
+  //fade out restart
+  $("#replay").transition({opacity: 0}, 100, 'ease', function()
+  {
+     end_reflect = new Date();
+     sendscore();
+     //start the game over!
+     showSplash();
+  });
+
+  //leave the scoreboard there
+  $("#scoreboard").transition({opacity: 1}, 100, 'ease', function() {
+    //when that's done, display us back to nothing
+    //$("#scoreboard").css("display", "none");
+
+    //start the game over!
+    //showSplash();
+  });
+});
 
 function playerScore()
 {
@@ -517,6 +483,7 @@ $("#experience").click(function() {
   for (var i = 0, length = radios.length; i < length; i++) {
       if (radios[i].checked) {
           experience = 1*radios[i].value;
+          assignment();
           break;
       }
   }
@@ -525,16 +492,10 @@ $("#experience").click(function() {
 });
 
 //I'm done with the game, take me to the final survey!
-
-$("#forward").click(function() {
-  if(currentstate == states.ScoreScreen) {
+$("#exitbt").click(function() {
     end_reflect = new Date();
     sendscore();
     window.location.href = "./post.html?user_id="+user_id+"&condition="+condition+"&experience="+experience;
-  }
-  else{
-    //nothing
-  }
 });
 
 function sendscore() {
@@ -549,7 +510,7 @@ function sendscore() {
       time_reflected += end_reflect - end_play;
    }
    socket.emit('update', { user_id:user_id, rounds:round, time_played:time_played, time_reflected:time_reflected, condition:condition, experience:experience });
-}
+};
 
 // incompatibility
 var isIncompatible = {

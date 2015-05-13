@@ -222,9 +222,9 @@ p
 #replay
 {
    opacity: 0;
-   margin: 10px;
    padding:10px;
    display: block;
+   line-height: 12px;
 }
 
 #restartbt
@@ -247,7 +247,7 @@ p
 
 #forward
 {
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 #exitbt
@@ -256,7 +256,7 @@ p
   display:block;
   background-color: #2ecc71;
   padding: 10px;
-  margin: 25px;
+  margin: 10px;
   font-size: 14px;
   color: white;
   border: 0px;
@@ -332,9 +332,9 @@ Screen - Game
 
 #bigscore
 {
-  /*position: absolute;*/
    top: 20px;
    z-index: 100;
+   margin: -10px;
 }
 
 #bigscore img
@@ -355,24 +355,33 @@ Screen - Game
    background-repeat: no-repeat;
 }
 
-.scoreboard
+#scoreboard
 {
    opacity: 0;
    top: 64px;
    left: 43px;
-   width: 236px;
-   height: 280px;
+   width: 100%;
+   height: 210px;
    z-index: 1000;
    border: 2px solid black;
    background-color: #ded895;
+}
+
+#leader-feedback
+{
+  opacity: 0;
+  padding: 10px;
+  display: block;
+  line-height: 12px;
+  border-bottom: 4px solid #2ecc71;
 }
 
 #currentscore
 {
    display: hidden;
    position: absolute;
-   top: 30px;
-   left: 60px;
+   top: 5px;
+   left: 78px;
    width: 104px;
    height: 14px;
    text-align: left;
@@ -387,8 +396,8 @@ Screen - Game
 {
    display: hidden;
    position: absolute;
-   top: 30px;
-   left: 80px;
+   top: 5px;
+   left: 79px;
    width: 104px;
    height: 14px;
    text-align: right;
@@ -501,14 +510,18 @@ Screen - Game
 hr
 {
   border: 2px solid #2ecc71;
+  margin-bottom: 5px;
+  margin-up: 5px;
 }
 
 #barwrap
 {
-  display: hidden;
-  margin-top: 60px;
-  height: 182px;
   display: inline-table;
+  margin-top: 25px;
+  height: 160px;
+
+  /*margin-top: 20px;
+  height: 182px;*/
 }
 
 .bar
@@ -518,11 +531,11 @@ hr
   bottom: 0;
   border: 2px solid black;
   display: list-item;
-  /*float: left;  Causes the line to float to left of content.
-    You can instead use position:absolute or display:inline-block
-    if this fits better with your design
-  margin-left: 62px;
-  margin-top: 72px;*/
+}
+
+.identifier
+{
+  font-weight: bold;
 }
 
 #participant
