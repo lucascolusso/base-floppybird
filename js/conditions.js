@@ -10,7 +10,7 @@ var leader = xp3;
 var userFeedback = '';
 var userCondition = function() {};
 var leaderBarColor = '#D1D1D1';
-var userBarColor = '#f8704f';
+var userBarColor = '#7cb5ec';
 var showHistoryFeedback = true;
 
 var conditions;
@@ -24,9 +24,9 @@ conditions = {
       xAxis: { type: 'category' },
       yAxis: {
         title: { text: 'Score' },
-        labels: { overflow: 'justify' },
         gridLineWidth: 0,
-        minorGridLineWidth: 0
+        minorGridLineWidth: 0,
+        labels: { enabled: false }
       },
       series: [{
         name: 'Score',
@@ -46,13 +46,7 @@ conditions = {
       legend: { enabled: false },
       credits: { enabled: false },
       xAxis: { categories: ['You', 'Leader'] },
-      yAxis: {
-        min: 0,
-        title: { text: 'Score' },
-        labels: { overflow: 'justify' },
-        gridLineWidth: 0,
-        minorGridLineWidth: 0
-        },
+      yAxis: { min: 0, title: { text: 'Score' }, gridLineWidth: 0, minorGridLineWidth: 0, labels: { enabled: false } },
       series: [{
         name: 'Score', colorByPoint: true,
         data: [
@@ -76,7 +70,7 @@ conditions = {
   },
   history: function() {
     if(showHistoryFeedback) {
-      userFeedback = 'These are your last 5 rounds scores.';
+      userFeedback = 'These are the scores of your last 5 rounds!';
     }
     last5 = userScores.getLast(5);
     chartBars = [];
@@ -90,13 +84,7 @@ conditions = {
       legend: { enabled: false },
       credits: { enabled: false },
       xAxis: { type: 'category' },
-      yAxis: {
-        min: 0,
-        title: { text: 'Score' },
-        labels: { overflow: 'justify' },
-        gridLineWidth: 0,
-        minorGridLineWidth: 0
-        },
+      yAxis: { min: 0, title: { text: 'Score' }, gridLineWidth: 0, minorGridLineWidth: 0, labels: { enabled: false } },
       series: [{
         name: 'Score',
         colorByPoint: true,
