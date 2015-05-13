@@ -28,18 +28,26 @@ function assignment () {
       userCondition = conditions.notSkewed;
       break;
     case 2:
-      conditions.comparison.similar();
-      userCondition = conditions.skewed;
+      conditions.comparison.fakeLeader();
+      userCondition = conditions.notSkewed;
       break;
     case 3:
-      conditions.comparison.leader();
+      conditions.comparison.similar();
       userCondition = conditions.skewed;
       break;
     case 4:
+      conditions.comparison.leader();
+      userCondition = conditions.skewed;
+      break;
+    case 5:
+      conditions.comparison.fakeLeader();
+      userCondition = conditions.skewed;
+      break;
+    case 6:
       conditions.comparison.similar();
       userCondition = conditions.history;
       break;
-    case 5:
+    case 7:
       conditions.comparison.leader();
       userCondition = conditions.history;
       break;

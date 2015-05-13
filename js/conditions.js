@@ -9,9 +9,9 @@ var xp5 = 49;
 var leader = xp3;
 var userFeedback = '';
 var userCondition = function() {};
-var leaderBarName = 'Leader'
+var leaderBarName = 'test'
 var leaderBarColor = '#D1D1D1';
-var userBarColor = '#7cb5ec';
+var userBarColor = '#f8704f';
 var showHistoryFeedback = true;
 var conditions;
 
@@ -110,7 +110,22 @@ conditions = {
       }
     },
     leader: function() {
+      leaderBarName = 'Leader';
       targetScore = leader;
+    },
+    fakeLeader: function() {
+      leaderBarName = 'Leader';
+      if(experience == 1) {
+        targetScore = xp1;
+      } else if(experience == 2) {
+        targetScore = xp2;
+      } else if(experience == 3) {
+        targetScore = xp3;
+      } else if(experience == 4) {
+        targetScore = xp4;
+      } else if(experience == 5) {
+        targetScore = xp5;
+      }
     }
   },
   userLeader: function() {
