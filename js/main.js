@@ -67,7 +67,7 @@ $(document).ready(function() {
   if(savedscore != "")
     highscore = parseInt(savedscore);
 
-  condition = Math.floor(Math.random()*5);
+  condition = Math.floor((Math.random()*5) + 1);
 
 
   //starts new row in the database
