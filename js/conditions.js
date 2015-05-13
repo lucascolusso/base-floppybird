@@ -9,11 +9,12 @@ var xp5 = 49;
 var leader = xp3;
 var userFeedback = '';
 var userCondition = function() {};
+var leaderBarName = 'Leader'
 var leaderBarColor = '#D1D1D1';
 var userBarColor = '#7cb5ec';
 var showHistoryFeedback = true;
-
 var conditions;
+
 conditions = {
   notSkewed: function() {
     $('#feedback-chart').highcharts({
@@ -33,7 +34,7 @@ conditions = {
         colorByPoint: true,
         data: [
           { name: 'You', color: userBarColor, y: score },
-          { name: 'Leader', color: leaderBarColor, y: targetScore }
+          { name: leaderBarName, color: leaderBarColor, y: targetScore }
         ],
         dataLabels: { enabled: true, style: { fontSize: '13px' } }
       }]
@@ -45,7 +46,7 @@ conditions = {
       title: { text: userFeedback },
       legend: { enabled: false },
       credits: { enabled: false },
-      xAxis: { categories: ['You', 'Leader'] },
+      xAxis: { categories: ['You', leaderBarName] },
       yAxis: { min: 0, title: { text: 'Score' }, gridLineWidth: 0, minorGridLineWidth: 0, labels: { enabled: false } },
       series: [{
         name: 'Score', colorByPoint: true,
@@ -77,7 +78,7 @@ conditions = {
     for (var i = last5.length-1; i >= 0; i--) {
       chartBars.push({ name: 'You', color: userBarColor, y: last5[i] });
     }
-    chartBars.push({ name: 'Leader', color: leaderBarColor, y: targetScore });
+    chartBars.push({ name: leaderBarName, color: leaderBarColor, y: targetScore });
     $('#feedback-chart').highcharts({
       chart: { type: 'column' },
       title: { text: userFeedback },
@@ -95,6 +96,7 @@ conditions = {
   },
   comparison: {
     similar: function() {
+      leaderBarName = 'Similar best';
       if(experience == 1) {
         targetScore = xp1;
       } else if(experience == 2) {
@@ -117,6 +119,7 @@ conditions = {
       userFeedback = 'Congratulations! Now you are the Leader!';
       targetScore = score;
       leaderBarColor = userBarColor;
+      leaderBarName = 'Your best';
     }
   }
 }
