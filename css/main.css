@@ -361,10 +361,9 @@ Screen - Game
    top: 64px;
    left: 43px;
    width: 100%;
-   height: 210px;
+   height: 250px;
    z-index: 1000;
    border: 2px solid black;
-   background-color: #ded895;
 }
 
 #leader-feedback
