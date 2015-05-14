@@ -96,7 +96,7 @@ conditions = {
   },
   comparison: {
     similar: function() {
-      leaderBarName = "Similar's best";
+      leaderBarName = "Similar's<br />best";
       if(experience == 1) {
         targetScore = xp1;
       } else if(experience == 2) {
@@ -110,11 +110,11 @@ conditions = {
       }
     },
     leader: function() {
-      leaderBarName = "Group's best";
+      leaderBarName = "Group's<br />best";
       targetScore = leader;
     },
     fakeLeader: function() {
-      leaderBarName = "Group's best";
+      leaderBarName = "Group's<br />best";
       if(experience == 1) {
         targetScore = xp1;
       } else if(experience == 2) {
@@ -134,7 +134,7 @@ conditions = {
       userFeedback = 'Congratulations! Now you are the Leader!';
       targetScore = score;
       leaderBarColor = userBarColor;
-      leaderBarName = 'Your best';
+      leaderBarName = 'Your<br />best';
     }
   }
 }
