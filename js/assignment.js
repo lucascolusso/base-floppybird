@@ -51,5 +51,9 @@ function assignment () {
       conditions.comparison.leader();
       userCondition = conditions.history;
       break;
+    case 8:
+      conditions.comparison.fakeLeader();
+      userCondition = conditions.history;
+      break;
   }
 }
