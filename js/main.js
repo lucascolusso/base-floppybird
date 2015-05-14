@@ -68,8 +68,7 @@ $(document).ready(function() {
     highscore = parseInt(savedscore);
 
   condition = Math.floor(Math.random() * (8 - 0 +1)) + 0;
-  alert(condition);
-
+  
   //starts new row in the database
   socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition, experience:experience });
 
