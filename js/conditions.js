@@ -71,7 +71,7 @@ conditions = {
   },
   history: function() {
     if(showHistoryFeedback) {
-      userFeedback = 'These are the scores of your last 5 rounds!';
+      userFeedback = 'These are the scores of your last 5 rounds.';
     }
     last5 = userScores.getLast(5);
     chartBars = [];
@@ -96,7 +96,7 @@ conditions = {
   },
   comparison: {
     similar: function() {
-      leaderBarName = 'Similar best';
+      leaderBarName = "Similar's best";
       if(experience == 1) {
         targetScore = xp1;
       } else if(experience == 2) {
@@ -110,11 +110,11 @@ conditions = {
       }
     },
     leader: function() {
-      leaderBarName = 'Leader';
+      leaderBarName = "Group's best";
       targetScore = leader;
     },
     fakeLeader: function() {
-      leaderBarName = 'Leader';
+      leaderBarName = "Group's best";
       if(experience == 1) {
         targetScore = xp1;
       } else if(experience == 2) {
