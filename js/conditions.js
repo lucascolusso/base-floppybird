@@ -1,4 +1,4 @@
-var targetscore = -1;
+var targetScore = -1;
 
 //comparisonscores
 var xp1 = 1;

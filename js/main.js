@@ -1,7 +1,7 @@
 //development routing
-//var socket = io.connect('http://localhost:9999');
+var socket = io.connect('http://localhost:9999');
 // server routing
-var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
+//var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
 
 //if there's no randomization of assignment, condition will be set as -1
 var condition = -1;
@@ -18,7 +18,7 @@ var end_reflect = 0;
 var time_played = 0;
 var time_reflected = 0;
 var user_id = uid();
-var experience = -1;
+//var experience = -1;
 
 //game settings
 var debugmode = false;
@@ -26,7 +26,6 @@ var states = Object.freeze({
    SplashScreen: 0,
    GameScreen: 1,
    ScoreScreen: 2,
-   Survey: 3
 });
 
 var currentstate;
@@ -40,8 +39,6 @@ var jump = -3.3;
 var pipeheight = 100;     // not sure but I think it's variability of the gap position
 var pipewidth = 40;       // pipes gap opening size
 var pipes = new Array();
-
-var replayclickable = false;
 
 //sounds
 var volume = 2;
@@ -69,12 +66,12 @@ $(document).ready(function() {
 
   condition = Math.floor(Math.random() * (8 - 0 +1)) + 0;
 
-  //  condition = 6;
+  // simple hack to narrow random assignment
   //  var pickOne = [3,6];
   //  condition = pickOne[Math.floor(Math.random() * pickOne.length)];
 
   //starts new row in the database
-  socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition, experience:experience });
+  socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition});
 
   //start with the splash screen
   showSplash();
@@ -305,37 +302,6 @@ function playerJump()
    soundJump.play();
 }
 
-function setBigScore(erase)
-{
-   var elemscore = $("#bigscore");
-   elemscore.empty();
-
-   if(erase)
-      return;
-
-   var digits = score.toString().split('');
-   for(var i = 0; i < digits.length; i++)
-      elemscore.append("<img src='assets/font_big_" + digits[i] + ".png' alt='" + digits[i] + "'>");
-}
-
-function setSmallScore()
-{
-   var elemscore = $("#currentscore");
-   elemscore.empty();
-   var digits = score.toString().split('');
-   for(var i = 0; i < digits.length; i++)
-      elemscore.append("<img src='assets/font_small_" + digits[i] + ".png' alt='" + digits[i] + "'>");
-}
-
-function setHighScore()
-{
-   var elemscore = $("#highscore");
-   elemscore.empty();
-   var digits = highscore.toString().split('');
-   for(var i = 0; i < digits.length; i++)
-      elemscore.append("<img src='assets/font_small_" + digits[i] + ".png' alt='" + digits[i] + "'>");
-}
-
 function playerDead()
 {
    //stop animating everything!
@@ -379,82 +345,6 @@ function playerDead()
    }
 }
 
-// show the scores and the feedback
-function showScore()
-{
-   //unhide us
-   $("#scoreboard").css("display", "block");
-   lastScore = score;
-   round++;
-   end_play = new Date();
-
-   //have they beaten the high score?
-   if(score > highscore)
-   {
-      //yeah!
-      highscore = score;
-      //save it!
-      setCookie("highscore", highscore, 999);
-   }
-   else
-   {
-     //update the scoreboard
-     setSmallScore();
-     setHighScore();
-    };
-
-   //SWOOSH!
-   soundSwoosh.stop();
-   soundSwoosh.play();
-
-   //show the scoreboard
-   $("#scoreboard").css({ y: '10px', opacity: 0 }); //move it down so we can slide it up
-   $("#replay").css({ y: '10px', opacity: 0 });
-   $("#scoreboard").transition({ y: '0px', opacity: 1}, 100, 'ease', function(){
-            //When the animation is done, animate in the replay button and SWOOSH!
-            soundSwoosh.stop();
-            soundSwoosh.play();
-            $("#replay").transition({ y: '0px', opacity: 1}, 100, 'ease');
-         });
-
-        // show feedback
-        $("#text-feedback").css({opacity: 1 }, 100, 'ease');
-
-        // show the exit button and make it clickable
-        $("#forward").transition({ opacity: 1 }, 100, 'ease');
-
-        replayclickable = true;
-}
-
-$("#replay").click(function() {
-  //make sure we can only click once
-  if(!replayclickable)
-    return;
-  else
-    replayclickable = false;
-  //SWOOSH!
-  soundSwoosh.stop();
-  soundSwoosh.play();
-
-  //fade out restart
-  $("#replay").transition({opacity: 0}, 100, 'ease', function()
-  {
-     end_reflect = new Date();
-     sendscore();
-     //start the game over!
-     showSplash();
-  });
-
-  //leave the scoreboard there
-  $("#scoreboard").transition({opacity: 1}, 100, 'ease', function() {
-    //when that's done, display us back to nothing
-    //$("#scoreboard").css("display", "none");
-
-    //start the game over!
-    //showSplash();
-  });
-});
-
 function playerScore()
 {
    score += 1;
@@ -480,25 +370,25 @@ function updatePipes()
    pipes.push(newpipe);
 }
 
-//getting experience from the modal form
-$("#experience").click(function() {
-  var radios = document.getElementsByName('inlineRadioOptions');
-  for (var i = 0, length = radios.length; i < length; i++) {
-      if (radios[i].checked) {
-          experience = 1*radios[i].value;
-          assignment();
-          break;
-      }
-  }
-   $('#myModal').modal('hide');
-   currentstate = states.SplashScreen;
-});
+// //getting experience from the modal form
+// $("#experience").click(function() {
+//   var radios = document.getElementsByName('inlineRadioOptions');
+//   for (var i = 0, length = radios.length; i < length; i++) {
+//       if (radios[i].checked) {
+//           experience = 1*radios[i].value;
+//           assignment();
+//           break;
+//       }
+//   }
+//    $('#myModal').modal('hide');
+//    currentstate = states.SplashScreen;
+// });
 
 //I'm done with the game, take me to the final survey!
 $("#exitbt").click(function() {
     end_reflect = new Date();
     sendscore();
-    window.location.href = "./post.html?user_id="+user_id+"&condition="+condition+"&experience="+experience;
+    window.location.href = "./post.html?id="+user_id+"&condition="+condition;
 });
 
 function sendscore() {
@@ -512,7 +402,7 @@ function sendscore() {
    if(end_reflect != 0 && end_play != 0) {
       time_reflected += end_reflect - end_play;
    }
-   socket.emit('update', { user_id:user_id, rounds:round, time_played:time_played, time_reflected:time_reflected, condition:condition, experience:experience });
+   socket.emit('update', { user_id:user_id, rounds:round, time_played:time_played, time_reflected:time_reflected, condition:condition });
 };
 
 // incompatibility

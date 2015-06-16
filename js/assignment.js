@@ -8,8 +8,8 @@ function showVariables() {
     highscore: highscore,
     lastScore: lastScore,
     round: round,
-    user_id: user_id,
-    experience: experience
+    user_id: user_id
+    //experience: experience
   }
 
   alert("variables: " + JSON.stringify(variables));
