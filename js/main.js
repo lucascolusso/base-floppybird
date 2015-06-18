@@ -64,10 +64,10 @@ $(document).ready(function() {
   if(savedscore != "")
     highscore = parseInt(savedscore);
 
-  condition = Math.floor(Math.random() * (8 - 0 +1)) + 0;
+  condition = Math.floor(Math.random() * (4 - 0 +1)) + 0;
 
   // simple hack to narrow random assignment
-  //  var pickOne = [3,6];
+  //  var pickOne = [2,3];
   //  condition = pickOne[Math.floor(Math.random() * pickOne.length)];
 
   //starts new row in the database

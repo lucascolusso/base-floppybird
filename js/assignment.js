@@ -9,7 +9,6 @@ function showVariables() {
     lastScore: lastScore,
     round: round,
     user_id: user_id
-    //experience: experience
   }
 
   alert("variables: " + JSON.stringify(variables));
@@ -20,40 +19,26 @@ function assignment () {
   //showVariables();
   switch(condition) {
     case 0:
-      conditions.comparison.similar();
-      userCondition = conditions.notSkewed;
+      conditions.comparison.leader();
+      userCondition = conditions.nonSkewed;
       break;
     case 1:
       conditions.comparison.leader();
-      userCondition = conditions.notSkewed;
+      userCondition = conditions.skewed;
       break;
     case 2:
-      conditions.comparison.fakeLeader();
-      userCondition = conditions.notSkewed;
+      conditions.comparison.similar();
+      userCondition = conditions.nonSkewed;
       break;
     case 3:
-      conditions.comparison.similar();
-      userCondition = conditions.skewed;
+      conditions.comparison.leader();
+      userCondition = conditions.nonSkewed;
+      document.getElementById("target-txt").textContent = "It took the leader XX rounds to score this.";
       break;
     case 4:
-      conditions.comparison.leader();
-      userCondition = conditions.skewed;
-      break;
-    case 5:
-      conditions.comparison.fakeLeader();
-      userCondition = conditions.skewed;
-      break;
-    case 6:
       conditions.comparison.similar();
-      userCondition = conditions.history;
-      break;
-    case 7:
-      conditions.comparison.leader();
-      userCondition = conditions.history;
-      break;
-    case 8:
-      conditions.comparison.fakeLeader();
-      userCondition = conditions.history;
+      userCondition = conditions.nonSkewed;
+      document.getElementById("target-txt").textContent = "It took this similar player XX rounds to score this.";
       break;
   }
 }

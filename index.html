@@ -21,22 +21,24 @@
              </h4>
            </div>
            <div class="modal-body">
-             <div class="row">
+             <div class="row" id="modal-row">
                <div class="col-md-6">
-                 <div id="comp-txt">
-                   You
-                   <b>scored
-                     <span id="currentscore">29</span>
-                   </b>
-                   in this round
+                 <div id="upward-feedback">
+                   <div class="modal-numbers" id="current-score">XX</div>
+                   <div class="comp-txt">
+                     was your score this round.
+                   </div>
                    <br />
                    <br />
-                   Your
-                   <b>comparison score is
-                     <span id="comparisonscore">999</span>
-                   </b>
-                   and is from
-                   <b>a similar player</b> to you.
+                   <div class="modal-numbers" id="comparison-score">XX</div>
+                   <div class="comp-txt">
+                     is your comparison score.
+                     <br />
+                     <b><span id="target-txt">It belongs to the best player.</span></b>
+                   </div>
+                 </div>
+                 <div class="comp-txt" id="leader-feedback">
+                   Congratulations! Now you are the best player!
                  </div>
                </div>
                <div class="col-md-6">

@@ -149,10 +149,6 @@ p{
  padding-bottom: 10px;
 }
 
-span{
-
-}
-
 #nogame{
   background-color: #ecf0f1;
   overflow: auto;
@@ -334,48 +330,12 @@ Screen - Game
 #leader-feedback
 {
   opacity: 0;
-  padding: 10px;
-  display: block;
-  line-height: 12px;
-  border-bottom: 4px solid #2ecc71;
 }
 
-#comp-txt
+.comp-txt
 {
   line-height: 32px;
   font-size: 18px;
-}
-
-#currentscore
-{
-   display: hidden;
-   position: absolute;
-   top: 5px;
-   left: 78px;
-   width: 104px;
-   height: 14px;
-   text-align: left;
-}
-
-#currentscore img
-{
-   padding-left: 2px;
-}
-
-#highscore
-{
-   display: hidden;
-   position: absolute;
-   top: 5px;
-   left: 79px;
-   width: 104px;
-   height: 14px;
-   text-align: right;
-}
-
-#highscore img
-{
-   padding-left: 2px;
 }
 
 .boundingbox
@@ -520,4 +480,22 @@ hr
   background-color: white; /* Line color */
   height: 100%; /* Override in-line if you want specific height. */
   margin-left: 30px;
+}
+
+#modal-row
+{
+  padding: 0;
+}
+
+.modal-numbers
+{
+  float: left;
+  padding-right: 7px;
+  padding-top: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+  color: #2980b9;
+  font-size: 32px;
 }

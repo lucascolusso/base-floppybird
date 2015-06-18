@@ -1,12 +1,10 @@
 var targetScore = -1;
 
 //comparisonscores
-var xp1 = 1;
-var xp2 = 19;
-var xp3 = 127;
-var xp4 = 51;
-var xp5 = 49;
-var leader = xp3;
+var median = 9;
+var high = 21;
+var max = 127;
+
 var userFeedback = '';
 var userCondition = function() {};
 var leaderBarName = 'test'
@@ -16,7 +14,7 @@ var showHistoryFeedback = true;
 var conditions;
 
 conditions = {
-  notSkewed: function() {
+  nonSkewed: function() {
     $('#feedback-chart').highcharts({
       chart: { type: 'column' },
       title: { text: userFeedback },
@@ -69,7 +67,7 @@ conditions = {
       }]
     });
   },
-  history: function() {
+  trend: function() {
     if(showHistoryFeedback) {
       userFeedback = 'These are the scores of your last 5 rounds.';
     }
@@ -95,43 +93,27 @@ conditions = {
     });
   },
   comparison: {
-    similar: function() {
-      leaderBarName = "Similar's<br />best";
-      if(experience == 1) {
-        targetScore = xp1;
-      } else if(experience == 2) {
-        targetScore = xp2;
-      } else if(experience == 3) {
-        targetScore = xp3;
-      } else if(experience == 4) {
-        targetScore = xp4;
-      } else if(experience == 5) {
-        targetScore = xp5;
-      }
+    median: function() {
+      leaderBarName = "Leader";
+      targetScore = median;
     },
-    leader: function() {
-      leaderBarName = "Group's<br />best";
-      targetScore = leader;
+    high: function() {
+      leaderBarName = "Leader";
+      targetScore = high;
     },
-    fakeLeader: function() {
-      leaderBarName = "Group's<br />best";
-      if(experience == 1) {
-        targetScore = xp1;
-      } else if(experience == 2) {
-        targetScore = xp2;
-      } else if(experience == 3) {
-        targetScore = xp3;
-      } else if(experience == 4) {
-        targetScore = xp4;
-      } else if(experience == 5) {
-        targetScore = xp5;
-      }
-    }
+    max: function() {
+      leaderBarName = "Leader";
+      targetScore = max;
+    },
   },
   userLeader: function() {
     if(score > targetScore) {
       showHistoryFeedback = false;
-      userFeedback = 'Congratulations! Now you are the Leader!';
+
+      //$("#upward-feedback").transition({ opacity: 0 }, 0, 'ease');
+      //$("#leader-feedback").transition({ opacity: 1 }, 100, 'ease');
+
+      userFeedback = 'Congratulations! Now you are the best player!';
       targetScore = score;
       leaderBarColor = userBarColor;
       leaderBarName = 'Your<br />best';

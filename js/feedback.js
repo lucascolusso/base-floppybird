@@ -14,20 +14,20 @@ function setBigScore(erase)
 
 function setSmallScore()
 {
-  var elemscore = $("#currentscore");
+  var elemscore = $("#current-score");
   elemscore.empty();
 
   elemscore = score.toString();
-  document.getElementById("currentscore").textContent=elemscore;
+  document.getElementById("current-score").textContent=elemscore;
 }
 
 function setHighScore()
 {
-   var elemscore = $("#highscore");
-   elemscore.empty();
-   var digits = highscore.toString().split('');
-   for(var i = 0; i < digits.length; i++)
-      elemscore.append("<img src='assets/font_small_" + digits[i] + ".png' alt='" + digits[i] + "'>");
+  var elemscore = $("#comparison-score");
+  elemscore.empty();
+
+  elemscore = highscore.toString();
+  document.getElementById("comparison-score").textContent=elemscore;
 }
 
 
