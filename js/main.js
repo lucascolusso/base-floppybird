@@ -329,7 +329,7 @@ function setHighScore()
   var elemscore = $("#comparison-score");
   elemscore.empty();
 
-  elemscore = 2;
+  elemscore = targetScore.toString();
   document.getElementById("comparison-score").textContent=elemscore;
 }
 
@@ -387,9 +387,9 @@ function playerDead()
 
    // save the user score.
    userScores.add(score);
+   conditions.userLeader();
 
    // Execute the experimental condition
-   conditions.userLeader();
    userCondition();
 
    //mobile browsers don't support buzz bindOnce event
@@ -433,20 +433,6 @@ function updatePipes()
    $("#flyarea").append(newpipe);
    pipes.push(newpipe);
 }
-
-// //getting experience from the modal form
-// $("#experience").click(function() {
-//   var radios = document.getElementsByName('inlineRadioOptions');
-//   for (var i = 0, length = radios.length; i < length; i++) {
-//       if (radios[i].checked) {
-//           experience = 1*radios[i].value;
-//           assignment();
-//           break;
-//       }
-//   }
-//    $('#myModal').modal('hide');
-//    currentstate = states.SplashScreen;
-// });
 
 //I'm done with the game, take me to the final survey!
 $("#exitbt").click(function() {

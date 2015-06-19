@@ -66,10 +66,10 @@ conditions = {
   comparison: {
     median: function() {
       targetScore = median;
-    }
+    },
     high: function() {
       targetScore = high;
-    }
+    },
     max: function() {
       targetScore = max;
     }
@@ -77,8 +77,8 @@ conditions = {
   userLeader: function() {
     if(score > targetScore) {
 
-      $("#upward-feedback").transition({ opacity: 0 }, 0, 'ease');
-      $("#leader-feedback").transition({ opacity: 1 }, 100, 'ease');
+      //$("#upward-feedback").transition({ opacity: 0 }, 0, 'ease');
+      //$("#leader-feedback").transition({ opacity: 1 }, 100, 'ease');
 
       targetScore = score;
       leaderBarColor = userBarColor;
