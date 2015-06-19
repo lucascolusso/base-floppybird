@@ -64,7 +64,7 @@ $(document).ready(function() {
   if(savedscore != "")
     highscore = parseInt(savedscore);
 
-  condition = Math.floor(Math.random() * (4 - 0 +1)) + 0;
+  condition = Math.floor(Math.random() * (11 - 0 +1)) + 0;
 
   // simple hack to narrow random assignment
   //  var pickOne = [2,3];
@@ -102,7 +102,7 @@ function uid () {
     function S4() {
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     }
-    return (S4() + S4() + delim + S4() + delim + S4() + delim + S4() + delim + S4() + S4() + S4());
+    return (S4() + delim + S4() + delim + S4() + delim + S4());
 };
 
 function showSplash()
@@ -302,6 +302,68 @@ function playerJump()
    soundJump.play();
 }
 
+function setBigScore(erase)
+{
+   var elemscore = $("#bigscore");
+   elemscore.empty();
+
+   if(erase)
+      return;
+
+   var digits = score.toString().split('');
+   for(var i = 0; i < digits.length; i++)
+      elemscore.append("<img src='assets/font_big_" + digits[i] + ".png' alt='" + digits[i] + "'>");
+}
+
+function setSmallScore()
+{
+  var elemscore = $("#current-score");
+  elemscore.empty();
+
+  elemscore = score.toString();
+  document.getElementById("current-score").textContent=elemscore;
+}
+
+function setHighScore()
+{
+  var elemscore = $("#comparison-score");
+  elemscore.empty();
+
+  elemscore = 2;
+  document.getElementById("comparison-score").textContent=elemscore;
+}
+
+// show the scores and the feedback
+function showScore()
+{
+   lastScore = score;
+   round++;
+   end_play = new Date();
+
+   //have they beaten the high score?
+   if(score > highscore)
+   {
+      //yeah!
+      highscore = score;
+      setCookie("highscore", highscore, 999);
+   }
+   else
+   {
+     //update the scoreboard
+     setSmallScore();
+     setHighScore();
+    };
+    $('#myModal').modal('show');
+    }
+        $("#restartbt").click(function() {
+
+          end_reflect = new Date();
+          sendscore();
+
+          //start the game over!
+          showSplash();
+});
+
 function playerDead()
 {
    //stop animating everything!
@@ -325,9 +387,11 @@ function playerDead()
 
    // save the user score.
    userScores.add(score);
-   conditions.userLeader();
+
    // Execute the experimental condition
+   conditions.userLeader();
    userCondition();
+
    //mobile browsers don't support buzz bindOnce event
    if(isIncompatible.any())
    {

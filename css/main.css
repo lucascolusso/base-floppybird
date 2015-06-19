@@ -327,11 +327,6 @@ Screen - Game
    border: 2px solid black;
 }
 
-#leader-feedback
-{
-  opacity: 0;
-}
-
 .comp-txt
 {
   line-height: 32px;
@@ -498,4 +493,14 @@ hr
   font-weight: bold;
   color: #2980b9;
   font-size: 32px;
+}
+
+#leader-feedback
+{
+  opacity: 0;
+}
+
+#trend-blurb
+{
+  opacity: 0;
 }
