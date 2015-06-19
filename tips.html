@@ -5,38 +5,46 @@
 </head>
 <body id="nogame">
   <div class="container">
-    <h1>You are joining a community of Flappy Bird players! Welcome!</h1>
-    <h2>Your scores will serve as comparison for other members to improve everyone's gaming skills.</h2>
+    <h2>Welcome to the Flappy Bird game!<br />
+      Your performance will be compared to past players' scores.</h2>
+      <div class="row">
+          <p>We hope you have fun while guiding our friend Flappy Bird through the pipes <br />
+            <b>without crashing into them or letting the Flappy Bird fall on the ground</b>.</p>
+      </div>
     <hr/>
+    <h2>Game controls</h2>
     <div class="row">
-      <div class="col">
-        <p>We hope you have fun while guiding our friend Flappy Bird through the pipes <b>without crashing into them or letting the Flappy Bird fall on the ground</b>.</p>
-        <p>You can see an example screen on the right.</p>
-        <p>In the online video game screen, you can see the bird and the pipes on the <b>left</b>. The score and other game controls appear on the <b>white region</b>.</p>
-      </div>
-      <div class="col">
-        <img src="assets/interface1.png" width="95%">
-      </div>
-    </div>
-    <br/>
-    <hr/ style="visibility: hidden">
-    <br/>
-    <h1>Game controls</h1>
-    <div class="row box">
-        <p><b>1.</b> To fly higher (i.e., flap your wings), press the "Spacebar".
-          <br/>
-          "Spacebar" is also the key you want to press to start each round.</p>
+      <div class="col box">
+        <p>
+          <b>1.</b> In the next screen, press "Spacebar" on your keyboard to start the first round.
+        </p>
+        <br/>
         <img src="assets/presplash.png">
+        <br /><br />
+        <p>
+          "Spacebar" is also the key you need to press to make Flappy Bird fly higher (i.e., flap wings).
+        </p>
+      </div>
+      <div class="col box">
+        <p><b>2.</b> After each round, you'll see a popup with information about your performace.
+          <br />
+          <br />
+          In the popup, you will also have the option to play a new round or exit the game.
+          <br />
+          To play a new round, click the "Play again" button.
+          <br />
+          To exit the game, click the "Exit game" button.
+          <br />
+          <br />
+          <img src="assets/bts.png" width="100%">
+      </div>
     </div>
-    <div class="row box">
-      <p><b>2.</b> After each round, you can start a new one by clicking the red "Play again" button or pressing the "Spacebar" on your keyboard.</p>
-        <img src="assets/bt-restart.png" width="35%">
+    <div>
+      <a href="./" style="text-decoration: none; color: black;">
+        <button class="bts" id="exitbt">
+          Start the game now!
+        </button>
+      </a>
     </div>
-    <div class="row box">
-        <p><b>3.</b> You can leave the game by clicking the green "Exit game" button.</p>
-        <img src="assets/bt-exit.png" width="35%">
-    </div>
-    <a href="index.html" id="exitbt" style="cursor: pointer">Start the game!</a>
-  </div>
-</body>
+  </body>
 </html>

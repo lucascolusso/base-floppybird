@@ -145,35 +145,36 @@ h2{
 }
 
 p{
- font-size: 14px;
+ font-size: 13px;
+ line-height: 18px;
  padding-bottom: 10px;
 }
 
 #nogame{
-  background-color: #ecf0f1;
   overflow: auto;
 }
 
 .row{
   display: block;
-  padding: 30px 0 30px 0;
   margin-top: 10px;
 }
 
 .col{
-  width: 50%;
+  width: 47%;
   float: left;
   position: relative;
+  padding: 10px;
+  margin-right: 10px;
 }
 
 .box{
   background-color: #dadada;
   border: 1px solid #b5b5b5;
-  padding: 15px;
+  margin: 10px;
 }
 
 .container{
-  padding:40px;
+  padding:30px;
   width: 800px;
   margin: 0 auto;
 }
