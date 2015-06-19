@@ -18,7 +18,6 @@ var end_reflect = 0;
 var time_played = 0;
 var time_reflected = 0;
 var user_id = uid();
-//var experience = -1;
 
 //game settings
 var debugmode = false;
@@ -72,6 +71,9 @@ $(document).ready(function() {
 
   //starts new row in the database
   socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition});
+
+  //assigns experimental condition
+  assignment();
 
   //start with the splash screen
   showSplash();
@@ -351,7 +353,6 @@ function showScore()
    {
     //update the scoreboard
     setSmallScore();
-    alert(targetScore);
     setHighScore();
    };
   $('#myModal').modal('show');

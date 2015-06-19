@@ -1,8 +1,11 @@
+var targetScore = -1;
+var leader = -1;
+
 function showVariables() {
   variables = {
     condition: condition,
     score: score,
-    targetscore: targetscore,
+    targetScore: targetScore,
     userScores: allScores,
     leader: leader,
     highscore: highscore,
@@ -16,26 +19,26 @@ function showVariables() {
 
 // feedback routing
 function assignment () {
-  showVariables();
+  //showVariables();
 
   switch(condition) {
 
   // max - leader
     case 0:
-      conditions.comparison.max();
+      conditions.comparison.leader();
       userCondition = conditions.nonSkewed;
       break;
     case 1:
-      conditions.comparison.max();
+      conditions.comparison.leader();
       userCondition = conditions.skewed;
       break;
     case 2:
-      conditions.comparison.max();
+      conditions.comparison.leader();
       userCondition = conditions.nonSkewed;
       document.getElementById("target-txt").textContent = "It belongs to a player who is similar to you.";
       break;
     case 3:
-      conditions.comparison.max();
+      conditions.comparison.leader();
       userCondition = conditions.nonSkewed;
       document.getElementById("target-txt").textContent = "It took the leader 2 rounds to score this.";
       break;

@@ -11,9 +11,33 @@ var leaderBarColor = '#f8704f';
 var userBarColor = '#36d77a';
 var conditions;
 
+//conditions logic
 conditions = {
   nonSkewed: function() {
-    $('.feedback-chart').highcharts({
+    $('#feedback-chart1').highcharts({
+      title:{ text:'' },
+      chart: { type: 'column' },
+      legend: { enabled: false },
+      credits: { enabled: false },
+      xAxis: { type: 'category' },
+      yAxis: {
+        title: { text: 'Score' },
+        gridLineWidth: 0,
+        minorGridLineWidth: 0,
+        labels: { enabled: false }
+      },
+      series: [{
+        name: 'Score',
+        colorByPoint: true,
+        data: [
+          { name: 'You', color: userBarColor, y: score },
+          { name: leaderBarName, color: leaderBarColor, y: targetScore }
+        ],
+        dataLabels: { enabled: true, style: { fontSize: '13px' } }
+      }]
+    });
+    $('#feedback-chart2').highcharts({
+      title:{ text:'' },
       chart: { type: 'column' },
       legend: { enabled: false },
       credits: { enabled: false },
@@ -36,7 +60,35 @@ conditions = {
     });
   },
   skewed: function() {
-    $('.feedback-chart').highcharts({
+    $('#feedback-chart1').highcharts({
+      title:{ text:'' },
+      chart: { type: 'column' },
+      legend: { enabled: false },
+      credits: { enabled: false },
+      xAxis: { categories: ['You', leaderBarName] },
+      yAxis: { min: 0, title: { text: 'Score' }, gridLineWidth: 0, minorGridLineWidth: 0, labels: { enabled: false } },
+      series: [{
+        name: 'Score', colorByPoint: true,
+        data: [
+        {
+          name: score.toString(), color: userBarColor, y: (Math.log(score)) / (Math.log(targetScore)),
+          dataLabels: {
+            enabled: true, style: { fontSize: '13px' },
+            formatter: function() { return score; }
+          }
+        },
+        {
+          name: targetScore, color: leaderBarColor, y: targetScore,
+          dataLabels: {
+            enabled: true, style: { fontSize: '13px' },
+            formatter: function() { return targetScore; }
+          }
+        }],
+        tooltip: { headerFormat: '{series.name}: <b>{point.key}</b>', pointFormat: '' }
+      }]
+    });
+    $('#feedback-chart2').highcharts({
+      title:{ text:'' },
       chart: { type: 'column' },
       legend: { enabled: false },
       credits: { enabled: false },
@@ -64,14 +116,14 @@ conditions = {
     });
   },
   comparison: {
-    median: function() {
-      targetScore = median;
+    leader: function() {
+      targetScore = max;
     },
     high: function() {
       targetScore = high;
     },
-    max: function() {
-      targetScore = max;
+    median: function() {
+      targetScore = median;
     }
   },
   userLeader: function() {
