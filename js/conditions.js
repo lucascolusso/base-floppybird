@@ -1,6 +1,6 @@
-var targetScore = -1;
+var targetScore = 999;
 
-//comparisonscores
+//comparison scores
 var median = 9;
 var high = 21;
 var max = 127;
@@ -13,7 +13,7 @@ var conditions;
 
 conditions = {
   nonSkewed: function() {
-    $('#feedback-chart').highcharts({
+    $('.feedback-chart').highcharts({
       chart: { type: 'column' },
       legend: { enabled: false },
       credits: { enabled: false },
@@ -36,7 +36,7 @@ conditions = {
     });
   },
   skewed: function() {
-    $('#feedback-chart').highcharts({
+    $('.feedback-chart').highcharts({
       chart: { type: 'column' },
       legend: { enabled: false },
       credits: { enabled: false },
@@ -77,8 +77,8 @@ conditions = {
   userLeader: function() {
     if(score > targetScore) {
 
-      //$("#upward-feedback").transition({ opacity: 0 }, 0, 'ease');
-      //$("#leader-feedback").transition({ opacity: 1 }, 100, 'ease');
+      $("#upward-feedback").hide();
+      $("#leader-feedback").transition({ opacity: 1 }, 100, 'ease');
 
       targetScore = score;
       leaderBarColor = userBarColor;

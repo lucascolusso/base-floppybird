@@ -343,25 +343,27 @@ function showScore()
    //have they beaten the high score?
    if(score > highscore)
    {
-      //yeah!
-      highscore = score;
-      setCookie("highscore", highscore, 999);
+    //yeah!
+    highscore = score;
+    setCookie("highscore", highscore, 999);
    }
    else
    {
-     //update the scoreboard
-     setSmallScore();
-     setHighScore();
-    };
-    $('#myModal').modal('show');
-    }
-        $("#restartbt").click(function() {
+    //update the scoreboard
+    setSmallScore();
+    alert(targetScore);
+    setHighScore();
+   };
+  $('#myModal').modal('show');
+}
 
-          end_reflect = new Date();
-          sendscore();
+  $("#restartbt").click(function() {
 
-          //start the game over!
-          showSplash();
+  end_reflect = new Date();
+  sendscore();
+
+  //start the game over!
+  showSplash();
 });
 
 function playerDead()
