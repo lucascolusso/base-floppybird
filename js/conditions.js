@@ -1,5 +1,3 @@
-var targetScore = 999;
-
 //comparison scores
 var median = 9;
 var high = 21;
@@ -10,11 +8,12 @@ var leaderBarName = 'Target'
 var leaderBarColor = '#f8704f';
 var userBarColor = '#36d77a';
 var conditions;
+var graphScore;
 
 //conditions logic
 conditions = {
   nonSkewed: function() {
-    $('#feedback-chart1').highcharts({
+    $('#feedback-chart-panel').highcharts({
       title:{ text:'' },
       chart: { type: 'column' },
       legend: { enabled: false },
@@ -36,7 +35,7 @@ conditions = {
         dataLabels: { enabled: true, style: { fontSize: '13px' } }
       }]
     });
-    $('#feedback-chart2').highcharts({
+    $('#feedback-chart-modal').highcharts({
       title:{ text:'' },
       chart: { type: 'column' },
       legend: { enabled: false },
@@ -60,7 +59,12 @@ conditions = {
     });
   },
   skewed: function() {
-    $('#feedback-chart1').highcharts({
+    if (score ==1) {
+      graphScore = targetScore*Math.log(2)/Math.log(targetScore)/2;
+    } else {
+      graphScore = targetScore*Math.log(score)/Math.log(targetScore);
+    };
+    $('#feedback-chart-panel').highcharts({
       title:{ text:'' },
       chart: { type: 'column' },
       legend: { enabled: false },
@@ -71,7 +75,7 @@ conditions = {
         name: 'Score', colorByPoint: true,
         data: [
         {
-          name: score.toString(), color: userBarColor, y: (Math.log(score)) / (Math.log(targetScore)),
+          name: score.toString(), color: userBarColor, y: graphScore, // testing logarithm
           dataLabels: {
             enabled: true, style: { fontSize: '13px' },
             formatter: function() { return score; }
@@ -87,7 +91,7 @@ conditions = {
         tooltip: { headerFormat: '{series.name}: <b>{point.key}</b>', pointFormat: '' }
       }]
     });
-    $('#feedback-chart2').highcharts({
+    $('#feedback-chart-modal').highcharts({
       title:{ text:'' },
       chart: { type: 'column' },
       legend: { enabled: false },
@@ -98,7 +102,7 @@ conditions = {
         name: 'Score', colorByPoint: true,
         data: [
         {
-          name: score.toString(), color: userBarColor, y: (Math.log(score)) / (Math.log(targetScore)),
+          name: score.toString(), color: userBarColor, y: graphScore, // testing logarithm
           dataLabels: {
             enabled: true, style: { fontSize: '13px' },
             formatter: function() { return score; }

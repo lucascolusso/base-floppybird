@@ -1,5 +1,6 @@
 var targetScore = -1;
 var leader = -1;
+var score = -1;
 
 function showVariables() {
   variables = {
@@ -29,6 +30,7 @@ function assignment () {
       userCondition = conditions.nonSkewed;
       break;
     case 1:
+      //conditions.fix();
       conditions.comparison.leader();
       userCondition = conditions.skewed;
       break;
@@ -69,6 +71,7 @@ function assignment () {
       userCondition = conditions.nonSkewed;
       break;
     case 9:
+      //conditions.fix();
       conditions.comparison.median();
       userCondition = conditions.skewed;
       break;

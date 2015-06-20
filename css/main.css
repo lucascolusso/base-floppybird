@@ -327,12 +327,12 @@ Screen - Game
    z-index: 1000;
 }
 
-#feedback-chart1
+#feedback-chart-modal
 {
    border: 2px solid black;
 }
 
-#feedback-chart2
+#feedback-chart-panel
 {
    border: 2px solid black;
 }
