@@ -37,12 +37,12 @@ function assignment () {
     case 2:
       conditions.comparison.leader();
       userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "It belongs to a player who is similar to you.";
+      document.getElementById("target-txt").textContent = "This score belongs to a player who has a similar performance to you.";
       break;
     case 3:
       conditions.comparison.leader();
       userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "It took the leader 2 rounds to score this.";
+      document.getElementById("target-txt").textContent = "It took the leader 2 rounds to accomplish this score..";
       break;
 
     // highs
@@ -57,12 +57,12 @@ function assignment () {
     case 6:
       conditions.comparison.high();
       userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "It belongs to a player who is similar to you.";
+      document.getElementById("target-txt").textContent = "This score belongs to a player who has a similar performance to you.";
       break;
     case 7:
       conditions.comparison.high();
       userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "It took the leader 4 rounds to score this.";
+      document.getElementById("target-txt").textContent = "It took the leader 6 rounds to accomplish this score.";
       break;
 
     // median
@@ -71,19 +71,18 @@ function assignment () {
       userCondition = conditions.nonSkewed;
       break;
     case 9:
-      //conditions.fix();
       conditions.comparison.median();
       userCondition = conditions.skewed;
       break;
     case 10:
       conditions.comparison.median();
       userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "It belongs to a player who is similar to you.";
+      document.getElementById("target-txt").textContent = "This score belongs to a player who has a similar performance to you.";
       break;
     case 11:
       conditions.comparison.median();
       userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "It took the leader 6 rounds to score this.";
+      document.getElementById("target-txt").textContent = "It took the leader 10 rounds to accomplish this score.";
       break;
   }
 }

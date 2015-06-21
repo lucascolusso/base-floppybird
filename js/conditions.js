@@ -1,7 +1,7 @@
 //comparison scores
 var median = 9;
-var high = 21;
-var max = 127;
+var high = 17;
+var max = 196;
 
 var userCondition = function() {};
 var leaderBarName = 'Target'
@@ -29,7 +29,7 @@ conditions = {
         name: 'Score',
         colorByPoint: true,
         data: [
-          { name: 'You', color: userBarColor, y: score },
+          { name: 'Last round', color: userBarColor, y: score },
           { name: leaderBarName, color: leaderBarColor, y: targetScore }
         ],
         dataLabels: { enabled: true, style: { fontSize: '13px' } }
@@ -51,7 +51,7 @@ conditions = {
         name: 'Score',
         colorByPoint: true,
         data: [
-          { name: 'You', color: userBarColor, y: score },
+          { name: 'Last round', color: userBarColor, y: score },
           { name: leaderBarName, color: leaderBarColor, y: targetScore }
         ],
         dataLabels: { enabled: true, style: { fontSize: '13px' } }
@@ -69,7 +69,7 @@ conditions = {
       chart: { type: 'column' },
       legend: { enabled: false },
       credits: { enabled: false },
-      xAxis: { categories: ['You', leaderBarName] },
+      xAxis: { categories: ['Last round', leaderBarName] },
       yAxis: { min: 0, title: { text: 'Score' }, gridLineWidth: 0, minorGridLineWidth: 0, labels: { enabled: false } },
       series: [{
         name: 'Score', colorByPoint: true,
@@ -96,7 +96,7 @@ conditions = {
       chart: { type: 'column' },
       legend: { enabled: false },
       credits: { enabled: false },
-      xAxis: { categories: ['You', leaderBarName] },
+      xAxis: { categories: ['Last round', leaderBarName] },
       yAxis: { min: 0, title: { text: 'Score' }, gridLineWidth: 0, minorGridLineWidth: 0, labels: { enabled: false } },
       series: [{
         name: 'Score', colorByPoint: true,
@@ -138,7 +138,7 @@ conditions = {
 
       targetScore = score;
       leaderBarColor = userBarColor;
-      leaderBarName = 'Your';
+      leaderBarName = 'Your best score';
     }
   }
 }
