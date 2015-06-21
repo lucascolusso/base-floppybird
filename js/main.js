@@ -5,6 +5,7 @@ var socket = io.connect('http://localhost:9999');
 
 //if there's no randomization of assignment, condition will be set as -1
 var condition = -1;
+var experience = -1;
 
 //scores
 var score = 0;
@@ -70,7 +71,7 @@ $(document).ready(function() {
   //  condition = pickOne[Math.floor(Math.random() * pickOne.length)];
 
   //starts new row in the database
-  socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition});
+  socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition, experience:experience });
 
   //assigns experimental condition
   assignment();
@@ -104,7 +105,7 @@ function uid () {
     function S4() {
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     }
-    return (S4() + delim + S4() + delim + S4() + delim + S4());
+    return (S4() + S4() + delim + S4() + delim + S4() + delim + S4() + delim + S4() + S4() + S4());
 };
 
 function showSplash()
@@ -455,7 +456,7 @@ function sendscore() {
    if(end_reflect != 0 && end_play != 0) {
       time_reflected += end_reflect - end_play;
    }
-   socket.emit('update', { user_id:user_id, rounds:round, time_played:time_played, time_reflected:time_reflected, condition:condition });
+   socket.emit('update', { user_id:user_id, rounds:round, time_played:time_played, time_reflected:time_reflected, condition:condition, experience:experience });
 };
 
 // incompatibility
