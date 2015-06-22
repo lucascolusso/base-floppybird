@@ -42,7 +42,7 @@ function assignment () {
     case 3:
       conditions.comparison.leader();
       userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "It took the leader 2 rounds to accomplish this score..";
+      document.getElementById("target-txt").textContent = "It took the leader 2 rounds to accomplish this score.";
       break;
 
     // highs

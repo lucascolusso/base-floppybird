@@ -353,11 +353,12 @@ function showScore()
    }
    else
    {
-    //update the scoreboard
-    setSmallScore();
-    setHighScore();
    };
   $('#myModal').modal('show');
+
+  //update the scoreboard
+  setSmallScore();
+  setHighScore();
 }
 
   $("#restartbt").click(function() {
