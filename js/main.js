@@ -1,14 +1,15 @@
 //development routing
 // var socket = io.connect('http://localhost:9999');
 // server routing
-var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
+ var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
 
 //if there's no randomization of assignment, condition will be set as -1
 var condition = -1;
 var experience = -1;
 
 //scores
-var score = 0;
+var score = -1;
+var targetScore = -1;
 var highscore = -1;
 
 var lastScore = 0;
@@ -320,20 +321,20 @@ function setBigScore(erase)
 
 function setSmallScore()
 {
-  var elemscore = $("#current-score");
+  var elemscore = $('#upward-feedback #current-score');
   elemscore.empty();
 
   elemscore = score.toString();
-  document.getElementById("current-score").textContent=elemscore;
+  $(document.getElementById('current-score').textContent=elemscore);
 }
 
 function setHighScore()
 {
-  var elemscore = $("#comparison-score");
+  var elemscore = $('#upward-feedback #comparison-score');
   elemscore.empty();
 
   elemscore = targetScore.toString();
-  document.getElementById("comparison-score").textContent=elemscore;
+  $(document.getElementById('comparison-score').textContent=elemscore);
 }
 
 // show the scores and the feedback
