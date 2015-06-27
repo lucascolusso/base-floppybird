@@ -5,46 +5,125 @@
 </head>
 <body id="nogame">
   <div class="container">
-    <h2>Welcome to the Flappy Bird game!<br />
-      Your performance will be compared to past players' scores.</h2>
-      <div class="row">
-          <p>We hope you have fun while guiding our friend Flappy Bird through the pipes <br />
-            <b>without crashing into them or letting the Flappy Bird fall on the ground</b>.</p>
-      </div>
-    <hr/>
-    <h2>Game controls</h2>
     <div class="row">
-      <div class="col box">
+      <div class="col">
+        <h2>Flappy Bird game</h2>
+        <p>Guide our friend Flappy Bird through the pipes <b>without crashing into them or letting the Flappy Bird fall on the ground</b>.</p>
+      </div>
+      <div class="col">
+        <h2><span id="h2s">We have data from people who played this game previously.<br />
+            Your performance will be compared to their scores.</span></h2>
+      </div>
+    </div>
+    <div class="row box">
+      <div class="col">
         <p>
           <b>1.</b> In the next screen, press "Spacebar" on your keyboard to start the first round.
         </p>
-        <br/>
-        <img src="assets/presplash.png">
-        <br /><br />
         <p>
           "Spacebar" is also the key you need to press to make Flappy Bird fly higher (i.e., flap wings).
         </p>
       </div>
-      <div class="col box">
-        <p><b>2.</b> After each round, you'll see a popup with information about your performace.
-          <br />
-          <br />
-          In the popup, you will also have the option to play a new round or exit the game.
-          <br />
-          To play a new round, click the "Play again" button.
-          <br />
-          To exit the game, click the "Exit game" button.
-          <br />
-          <br />
-          <img src="assets/bts.png" width="100%">
+      <div class="col">
+        <span style="cursor:not-allowed"><img src="assets/presplash.png"></span>
       </div>
     </div>
-    <div>
-      <a href="./" style="text-decoration: none; color: black;">
-        <button class="bts" id="exitbt">
-          Start the game now!
-        </button>
-      </a>
+    <div class="row box">
+      <div class="col">
+        <p>
+          <b>2.</b> After each round, you will see a popup with information about your performance.
+        </p>
+        <p>
+          In the popup, you will also have the option to play a new round or exit the game and continue to the final survey.
+        </p>
+        <p>
+          To play a new round, click the "Play again" button.
+        </p>
+        <p>
+          To exit the game and continue to the final survey, click the "Exit game" button.
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <b>Buttom examples</b>
+        </p>
+        <span style="cursor:not-allowed"><img src="assets/bts.png" width="50%"></span>
+      </div>
     </div>
+    <div class="row">
+      <p>
+        How much experience do you have with online games? You will be compared to players with similar experience.
+      </p>
+        <form id="myForm">
+              <div class="radio">
+                <table>
+                <tr>
+                  <th>
+                    <label class="radio-inline text-center">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
+                      <br/>I never play video games
+                    </label>
+                  </th>
+                  <th>
+                    <label class="radio-inline text-center">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
+                      <br/>
+                      I rarely play video games
+                    </label>
+                  </th>
+                  <th>
+                    <label class="radio-inline text-center">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3">
+                      <br/>
+                      I play video games sometimes
+                    </label>
+                  </th>
+                  <th>
+                    <label class="radio-inline text-center">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4">
+                      <br/>
+                      I play video games often
+                    </label>
+                  </th>
+                  <th>
+                    <label class="radio-inline text-center">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5">
+                      <br/>
+                      I play video games all of the time
+                    </label>
+                  </th>
+                </tr>
+                </table>
+              </div>
+            </form>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div id="alert" style="color:red;font-weight:bold;font-size:18px;opacity:0">
+            Please select your level of experience before moving to the game!
+          </div>
+        </div>
+        <div class="col">
+          <button class="bts" id="exitbt" onclick="myFunction()">
+            Send answer and start the game!
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function myFunction() {
+        var radios = document.getElementsByName('inlineRadioOptions');
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                localStorage.setItem('experience',JSON.stringify(1*radios[i].value));
+                window.location.href = "./";
+                break;
+            } else {
+              document.getElementById("alert").style.opacity = "1";
+              localStorage.setItem('experience','-1');
+            }
+          }
+        }
+    </script>
   </body>
 </html>

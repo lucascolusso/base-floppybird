@@ -5,7 +5,7 @@
 
 //if there's no randomization of assignment, condition will be set as -1
 var condition = -1;
-var experience = -1;
+var experience = localStorage.getItem('experience');
 
 //scores
 var score = -1;
@@ -68,7 +68,7 @@ $(document).ready(function() {
   condition = Math.floor(Math.random() * (11 - 0 +1)) + 0;
 
   // simple hack to narrow random assignment
-  //  var pickOne = [9];
+  //  var pickOne = [3];
   //  condition = pickOne[Math.floor(Math.random() * pickOne.length)];
 
   //starts new row in the database
@@ -444,7 +444,7 @@ function updatePipes()
 $("#exitbt").click(function() {
     end_reflect = new Date();
     sendscore();
-    window.location.href = "./post.html?id="+user_id+"&condition="+condition;
+    window.location.href = "./post.html?id="+user_id+"&condition="+condition+"&experience="+experience;
 });
 
 function sendscore() {

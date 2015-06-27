@@ -134,7 +134,7 @@ conditions = {
     if(score > targetScore) {
 
       $("#upward-feedback").hide();
-      $("#leader-feedback").transition({ opacity: 1 }, 100, 'ease');
+      $("#leader-feedback").show();
 
       targetScore = score;
       leaderBarColor = userBarColor;

@@ -139,9 +139,14 @@ h1{
 
 h2{
   font-size: 21px;
-  padding-bottom: 10px;
   line-height:32px;
+  color:#fc7858;
+}
+
+#h2s{
   color:#18b259;
+  font-size: 18px;
+  line-height:26px;
 }
 
 p{
@@ -154,9 +159,20 @@ p{
   overflow: auto;
 }
 
+.container{
+  padding:20px;
+  width: 800px;
+  margin: 0 auto;
+}
+
 .row{
-  display: block;
-  margin-top: 10px;
+  display: table;
+  margin: 10px;
+}
+
+.box{
+  background-color: #dadada;
+  border: 1px solid #b5b5b5;
 }
 
 .col{
@@ -165,18 +181,6 @@ p{
   position: relative;
   padding: 10px;
   margin-right: 10px;
-}
-
-.box{
-  background-color: #dadada;
-  border: 1px solid #b5b5b5;
-  margin: 10px;
-}
-
-.container{
-  padding:30px;
-  width: 800px;
-  margin: 0 auto;
 }
 
 #gamecontainer{
@@ -297,7 +301,7 @@ Screen - Game
 {
    top: 20px;
    z-index: 100;
-   margin: -10px;
+   height: 40px;
 }
 
 #bigscore img
@@ -507,10 +511,14 @@ hr
 
 #leader-feedback
 {
-  opacity: 0;
+  display: none;
 }
 
 #trend-blurb
 {
   opacity: 0;
+}
+
+#floatright{
+  float: right;
 }
