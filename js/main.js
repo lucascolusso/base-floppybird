@@ -1,7 +1,7 @@
 //development routing
-// var socket = io.connect('http://localhost:9999');
+var socket = io.connect('http://localhost:9999');
 // server routing
- var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
+// var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
 
 //if there's no randomization of assignment, condition will be set as -1
 var condition = -1;
@@ -444,7 +444,7 @@ function updatePipes()
 $("#exitbt").click(function() {
     end_reflect = new Date();
     sendscore();
-    window.location.href = "./post.html?id="+user_id+"&condition="+condition+"&experience="+experience;
+    window.location.href = "./post.html?user_id="+user_id+"&condition="+condition+"&experience="+experience;
 });
 
 function sendscore() {
