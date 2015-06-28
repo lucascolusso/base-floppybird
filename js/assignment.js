@@ -39,50 +39,50 @@ function assignment () {
       userCondition = conditions.nonSkewed;
       document.getElementById("target-txt").textContent = "This score belongs to a player who has a similar performance to you.";
       break;
-    case 3:
-      conditions.comparison.leader();
-      userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "It took the leader 2 rounds to accomplish this score.";
-      break;
+    // case 3:
+    //   conditions.comparison.leader();
+    //   userCondition = conditions.nonSkewed;
+    //   document.getElementById("target-txt").textContent = "It took the leader 2 rounds to accomplish this score.";
+    //   break;
 
     // highs
-    case 4:
+    case 3:
       conditions.comparison.high();
       userCondition = conditions.nonSkewed;
+      break;
+    case 4:
+      conditions.comparison.high();
+      userCondition = conditions.skewed;
       break;
     case 5:
       conditions.comparison.high();
-      userCondition = conditions.skewed;
-      break;
-    case 6:
-      conditions.comparison.high();
       userCondition = conditions.nonSkewed;
       document.getElementById("target-txt").textContent = "This score belongs to a player who has a similar performance to you.";
       break;
-    case 7:
-      conditions.comparison.high();
-      userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "It took the leader 6 rounds to accomplish this score.";
-      break;
+    // case 7:
+    //   conditions.comparison.high();
+    //   userCondition = conditions.nonSkewed;
+    //   document.getElementById("target-txt").textContent = "It took the leader 6 rounds to accomplish this score.";
+    //   break;
 
     // median
+    case 6:
+      conditions.comparison.median();
+      userCondition = conditions.nonSkewed;
+      break;
+    case 7:
+      conditions.comparison.median();
+      userCondition = conditions.skewed;
+      break;
     case 8:
       conditions.comparison.median();
       userCondition = conditions.nonSkewed;
-      break;
-    case 9:
-      conditions.comparison.median();
-      userCondition = conditions.skewed;
-      break;
-    case 10:
-      conditions.comparison.median();
-      userCondition = conditions.nonSkewed;
       document.getElementById("target-txt").textContent = "This score belongs to a player who has a similar performance to you.";
       break;
-    case 11:
-      conditions.comparison.median();
-      userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "It took the leader 10 rounds to accomplish this score.";
-      break;
+    // case 11:
+    //   conditions.comparison.median();
+    //   userCondition = conditions.nonSkewed;
+    //   document.getElementById("target-txt").textContent = "It took the leader 10 rounds to accomplish this score.";
+    //   break;
   }
 }
