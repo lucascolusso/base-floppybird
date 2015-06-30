@@ -153,7 +153,7 @@ conditions = {
   userLeader: function() {
     if(score > targetScore) {
 
-      $("#upward-feedback").hide();
+      $("#erase-if-leader").hide();
       $("#leader-feedback").show();
 
       targetScore = score;

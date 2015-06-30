@@ -61,10 +61,10 @@ $(document).ready(function() {
   if(window.location.search == "?easy")
     pipeheight = 200;
 
-  //get the highscore
-  var savedscore = getCookie("highscore");
-  if(savedscore != "")
-    highscore = parseInt(savedscore);
+  // //get the highscore
+  // var savedscore = getCookie("highscore");
+  // if(savedscore != "")
+  //   highscore = parseInt(savedscore);
 
    condition = Math.floor(Math.random() * (8 - 0 +1)) + 0;
 
@@ -334,7 +334,7 @@ function setBigScore(erase)
 
 function setSmallScore()
 {
-  var elemscore = $('#upward-feedback #current-score');
+  var elemscore = $('#current-score');
   elemscore.empty();
 
   elemscore = score.toString();
@@ -343,11 +343,20 @@ function setSmallScore()
 
 function setHighScore()
 {
-  var elemscore = $('#upward-feedback #comparison-score');
+  var elemscore = $('#comparison-score');
   elemscore.empty();
 
   elemscore = targetScore.toString();
   $(document.getElementById('comparison-score').textContent=elemscore);
+}
+
+function setYourHighScore()
+{
+  var elemscore = $('#your-high-score');
+  elemscore.empty();
+
+  elemscore = highscore.toString();
+  $(document.getElementById('your-high-score').textContent=elemscore);
 }
 
 // show the scores and the feedback
@@ -362,7 +371,7 @@ function showScore()
    {
     //yeah!
     highscore = score;
-    setCookie("highscore", highscore, 999);
+    //setCookie("highscore", highscore, 999);
    }
    else
    {
@@ -372,6 +381,7 @@ function showScore()
   //update the scoreboard
   setSmallScore();
   setHighScore();
+  setYourHighScore()
 }
 
   $("#restartbt").click(function() {

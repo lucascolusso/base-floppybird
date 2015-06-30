@@ -24,24 +24,47 @@
              <div class="row" id="modal-row">
                <div class="col-md-6">
                  <div id="upward-feedback">
-                   <div class="modal-numbers" id="current-score">XX</div>
-                   <div class="comp-txt">
-                     was your score this round.
-                   </div>
-                   <br />
-                   <br />
-                   <br />
-                   <div class="modal-numbers" id="comparison-score">XX</div>
-                   <div class="comp-txt">
-                     is your comparison score.
+                   <div class="comp-txt" id="leader-feedback">
+                     <b>You are now the best player in the game!</b>
                      <br />
                      <br />
-                     <b><span id="target-txt">It belongs to the best player in the game.</span></b>
                    </div>
-                 </div>
-                 <div class="comp-txt" id="leader-feedback">
-                   <b>Congratulations!<br/>
-                     Now you are the best player in the game!</b>
+                   <table>
+                     <tr>
+                       <td>
+                         <div class="comp-txt">
+                           Your score this round:
+                           <br />
+                           <br />
+                         </div>
+                       </td>
+                       <td>
+                         <div class="modal-numbers" id="current-score">XX</div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>
+                         <div class="comp-txt">
+                           Your best score:
+                           <br />
+                           <br />
+                         </div>
+                       </td>
+                       <td>
+                         <div class="modal-numbers" id="your-high-score">XX</div>
+                       </td>
+                     </tr>
+                     <tr id="erase-if-leader">
+                       <td>
+                         <div class="comp-txt" id="target-txt">
+                           Leader's high score:
+                         </div>
+                       </td>
+                       <td>
+                         <div class="modal-numbers" id="comparison-score">XX</div>
+                       </td>
+                    </tr>
+                  </table>
                  </div>
                </div>
                <div class="col-md-6">

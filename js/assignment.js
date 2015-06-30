@@ -38,7 +38,7 @@ function assignment () {
       conditions.comparison.leader();
       userCondition = conditions.nonSkewed;
       leaderBarName = 'Similar player';
-      document.getElementById("target-txt").textContent = "This score belongs to a player who has a similar experience.";
+      document.getElementById("target-txt").textContent = "Highest score among similar players:";
       break;
     // case 3:
     //   conditions.comparison.leader();
@@ -59,7 +59,7 @@ function assignment () {
       conditions.comparison.high();
       userCondition = conditions.nonSkewed;
       leaderBarName = 'Similar player';
-      document.getElementById("target-txt").textContent = "This score belongs to a player who has a similar experience.";
+      document.getElementById("target-txt").textContent = "Highest score among similar players:";
       break;
     // case 7:
     //   conditions.comparison.high();
@@ -80,7 +80,7 @@ function assignment () {
       conditions.comparison.median();
       userCondition = conditions.nonSkewed;
       leaderBarName = 'Similar player';
-      document.getElementById("target-txt").textContent = "This score belongs to a player who has a similar experience.";
+      document.getElementById("target-txt").textContent = "Highest score among similar players:";
       break;
     // case 11:
     //   conditions.comparison.median();
