@@ -11,6 +11,7 @@ var experience = localStorage.getItem('experience');
 var score = -1;
 var targetScore = -1;
 var highscore = -1;
+var graphscore = 99;
 
 var lastScore = 0;
 var round = 0;
@@ -65,10 +66,10 @@ $(document).ready(function() {
   if(savedscore != "")
     highscore = parseInt(savedscore);
 
-  condition = Math.floor(Math.random() * (8 - 0 +1)) + 0;
+   condition = Math.floor(Math.random() * (8 - 0 +1)) + 0;
 
   // simple hack to narrow random assignment
-  //  var pickOne = [3];
+  // var pickOne = [4];
   //  condition = pickOne[Math.floor(Math.random() * pickOne.length)];
 
   //starts new row in the database
@@ -79,6 +80,7 @@ $(document).ready(function() {
 
   //start with the splash screen
   showSplash();
+  userCondition();
 });
 
 function getCookie(cname)
@@ -137,6 +139,16 @@ function showSplash()
    $("#splash").transition({ opacity: 1 }, 100, 'ease');
 }
 
+function updateGraph()
+{
+   var loopscore = score;
+
+   if (condition == 1 || condition == 4 || condition == 7) {
+   conditions.skewed();
+   } else {
+   conditions.nonSkewed();
+   }
+}
 function startGame()
 {
    currentstate = states.GameScreen;
@@ -147,6 +159,7 @@ function startGame()
 
    //update the big score
    setBigScore();
+   updateGraph();
 
    //debug mode?
    if(debugmode)
@@ -422,6 +435,7 @@ function playerScore()
    soundScore.stop();
    soundScore.play();
    setBigScore();
+   updateGraph();
 }
 
 //beginning earlier is not here

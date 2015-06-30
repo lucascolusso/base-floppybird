@@ -4,7 +4,7 @@ var high = 17;
 var max = 196;
 
 var userCondition = function() {};
-var leaderBarName = 'Target'
+var leaderBarName = 'Leader'
 var leaderBarColor = '#f8704f';
 var userBarColor = '#36d77a';
 var conditions;
@@ -25,11 +25,16 @@ conditions = {
         minorGridLineWidth: 0,
         labels: { enabled: false }
       },
+      plotOptions: {
+      series: {
+          animation: false
+          }
+      },
       series: [{
         name: 'Score',
         colorByPoint: true,
         data: [
-          { name: 'Last round', color: userBarColor, y: score },
+          { name: 'Your score', color: userBarColor, y: score },
           { name: leaderBarName, color: leaderBarColor, y: targetScore }
         ],
         dataLabels: { enabled: true, style: { fontSize: '13px' } }
@@ -47,11 +52,16 @@ conditions = {
         minorGridLineWidth: 0,
         labels: { enabled: false }
       },
+      plotOptions: {
+      series: {
+          animation: false
+          }
+      },
       series: [{
         name: 'Score',
         colorByPoint: true,
         data: [
-          { name: 'Last round', color: userBarColor, y: score },
+          { name: 'Your score', color: userBarColor, y: score },
           { name: leaderBarName, color: leaderBarColor, y: targetScore }
         ],
         dataLabels: { enabled: true, style: { fontSize: '13px' } }
@@ -69,13 +79,18 @@ conditions = {
       chart: { type: 'column' },
       legend: { enabled: false },
       credits: { enabled: false },
-      xAxis: { categories: ['Last round', leaderBarName] },
+      xAxis: { categories: ['Your score', leaderBarName] },
       yAxis: { min: 0, title: { text: 'Score' }, gridLineWidth: 0, minorGridLineWidth: 0, labels: { enabled: false } },
+      plotOptions: {
+      series: {
+          animation: false
+          }
+      },
       series: [{
         name: 'Score', colorByPoint: true,
         data: [
         {
-          name: score.toString(), color: userBarColor, y: graphScore, // testing logarithm
+          name: score.toString(), color: userBarColor, y: graphScore, // log calculus
           dataLabels: {
             enabled: true, style: { fontSize: '13px' },
             formatter: function() { return score; }
@@ -96,8 +111,13 @@ conditions = {
       chart: { type: 'column' },
       legend: { enabled: false },
       credits: { enabled: false },
-      xAxis: { categories: ['Last round', leaderBarName] },
+      xAxis: { categories: ['Your score', leaderBarName] },
       yAxis: { min: 0, title: { text: 'Score' }, gridLineWidth: 0, minorGridLineWidth: 0, labels: { enabled: false } },
+      plotOptions: {
+      series: {
+          animation: false
+          }
+      },
       series: [{
         name: 'Score', colorByPoint: true,
         data: [
