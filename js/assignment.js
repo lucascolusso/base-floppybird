@@ -20,7 +20,7 @@ function showVariables() {
 
 // feedback routing
 function assignment () {
-  showVariables();
+  //showVariables();
 
   switch(condition) {
 
