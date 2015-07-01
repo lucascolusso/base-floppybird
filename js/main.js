@@ -3,8 +3,11 @@
 // server routing
  var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
 
-//if there's no randomization of assignment, condition will be set as -1
-var condition = -1;
+//creating variable condition, if it doesn't work, it will be -1 :)
+var condition = -1
+
+//getting localStorage experience and condition values from previous screen
+var condition = parseInt(localStorage.getItem('condition'));
 var experience = localStorage.getItem('experience');
 
 //scores
@@ -61,16 +64,7 @@ $(document).ready(function() {
   if(window.location.search == "?easy")
     pipeheight = 200;
 
-  // //get the highscore
-  // var savedscore = getCookie("highscore");
-  // if(savedscore != "")
-  //   highscore = parseInt(savedscore);
-
-   condition = Math.floor(Math.random() * (8 - 0 +1)) + 0;
-
-  // simple hack to narrow random assignment
-  // var pickOne = [4];
-  //  condition = pickOne[Math.floor(Math.random() * pickOne.length)];
+    // condition = conditionpass;
 
   //starts new row in the database
   socket.emit('user', { user_id:user_id, rounds:round, time_played:0, time_reflected:0, condition:condition, experience:experience });

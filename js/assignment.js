@@ -20,7 +20,7 @@ function showVariables() {
 
 // feedback routing
 function assignment () {
-  //showVariables();
+  showVariables();
 
   switch(condition) {
 
@@ -80,7 +80,7 @@ function assignment () {
       conditions.comparison.median();
       userCondition = conditions.nonSkewed;
       leaderBarName = 'Similar player';
-      document.getElementById("target-txt").textContent = "Highest score among similar players:";
+      document.getElementById("target-txt").textContent = "Highest score among similar players";
       break;
     // case 11:
     //   conditions.comparison.median();

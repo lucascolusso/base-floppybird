@@ -15,7 +15,10 @@ function getUrlVars() {
 function writeVars() {
 	var first = getUrlVars()["user_id"];
 	var second = getUrlVars()["condition"];
+    second = second.toString();
   var third = getUrlVars()["experience"];
+
+  alert(second);
 
   document.write("<div class='container'");
   document.write("<br/>");

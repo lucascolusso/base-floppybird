@@ -3,7 +3,7 @@
   <link href="css/reset.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
 </head>
-<body id="nogame">
+<body id="nogame" onload="randomization()">
   <div class="container">
     <div class="row">
       <div class="col">
@@ -52,8 +52,9 @@
     </div>
     <div class="row">
       <p>
-        How much experience do you have with online games? You will be compared to players with similar experience.
+        How much experience do you have with online games? You will be compared to <b id="txt">the top scorer in the game<b>.
       </p>
+      <br />
         <form id="myForm">
               <div class="radio">
                 <table>
@@ -110,6 +111,24 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+    function randomization() {
+            var randomCondition = -1;
+
+            randomCondition = ( Math.floor(Math.random() * (8 - 0 +1)) + 0 );
+
+             // simple hack to narrow random assignment
+             // var pickOne = [4];
+             //  randomCondition = pickOne[Math.floor(Math.random() * pickOne.length)];
+
+            localStorage.setItem('condition',(randomCondition));
+
+            if (randomCondition == 2 || randomCondition == 5 || randomCondition == 8) {
+              document.getElementById("txt").textContent = "players with a similar gaming experience";
+            } else {
+            }
+         }
+    </script>
     <script type="text/javascript">
       function myFunction() {
         var radios = document.getElementsByName('inlineRadioOptions');
