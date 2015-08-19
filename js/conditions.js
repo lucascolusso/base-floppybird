@@ -70,77 +70,6 @@ conditions = {
       }]
     });
   },
-  skewed: function() {
-    if (score ==1) {
-      graphScore = targetScore*Math.log(2)/Math.log(targetScore)/2;
-    } else {
-      graphScore = targetScore*Math.log(score)/Math.log(targetScore);
-    };
-    $('#feedback-chart-panel').highcharts({
-      title:{ text:'' },
-      chart: { type: 'column' },
-      legend: { enabled: false },
-      credits: { enabled: false },
-      xAxis: { categories: ['Your score', leaderBarName] },
-      yAxis: { min: 0, title: { text: 'Score' }, gridLineWidth: 0, minorGridLineWidth: 0, labels: { enabled: false } },
-      plotOptions: {
-      series: {
-          animation: false
-          }
-      },
-      series: [{
-        name: 'Score', colorByPoint: true,
-        data: [
-        {
-          name: score.toString(), color: userBarColor, y: graphScore, // log calculus
-          dataLabels: {
-            enabled: true, style: { fontSize: '13px' },
-            formatter: function() { return score; }
-          }
-        },
-        {
-          name: targetScore, color: leaderBarColor, y: targetScore,
-          dataLabels: {
-            enabled: true, style: { fontSize: '13px' },
-            formatter: function() { return targetScore; }
-          }
-        }],
-        tooltip: { headerFormat: '{series.name}: <b>{point.key}</b>', pointFormat: '' }
-      }]
-    });
-    $('#feedback-chart-modal').highcharts({
-      title:{ text:'' },
-      chart: { type: 'column' },
-      legend: { enabled: false },
-      credits: { enabled: false },
-      xAxis: { categories: ['Your score', leaderBarName] },
-      yAxis: { min: 0, title: { text: 'Score' }, gridLineWidth: 0, minorGridLineWidth: 0, labels: { enabled: false } },
-      plotOptions: {
-      series: {
-          animation: false
-          }
-      },
-      series: [{
-        name: 'Score', colorByPoint: true,
-        data: [
-        {
-          name: score.toString(), color: userBarColor, y: graphScore, // testing logarithm
-          dataLabels: {
-            enabled: true, style: { fontSize: '13px' },
-            formatter: function() { return score; }
-          }
-        },
-        {
-          name: targetScore, color: leaderBarColor, y: targetScore,
-          dataLabels: {
-            enabled: true, style: { fontSize: '13px' },
-            formatter: function() { return targetScore; }
-          }
-        }],
-        tooltip: { headerFormat: '{series.name}: <b>{point.key}</b>', pointFormat: '' }
-      }]
-    });
-  },
   comparison: {
     leader: function() {
       targetScore = max;
@@ -160,7 +89,7 @@ conditions = {
 
       targetScore = score;
       leaderBarColor = userBarColor;
-      leaderBarName = 'Your best score';
+      leaderBarName = 'Your best';
     }
   }
 }

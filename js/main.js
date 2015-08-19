@@ -1,7 +1,7 @@
 //development routing
-// var socket = io.connect('http://localhost:9999');
+ var socket = io.connect('http://localhost:9999');
 // server routing
- var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
+// var socket = io.connect('http://prosocial.hcde.uw.edu:9999');
 
 //creating variable condition, if it doesn't work, it will be -1 :)
 var condition = -1
@@ -137,10 +137,11 @@ function updateGraph()
 {
    var loopscore = score;
 
-   if (condition == 1 || condition == 4 || condition == 7) {
-   conditions.skewed();
-   } else {
+   if (condition == 0 || condition == 1 || condition == 2) {
    conditions.nonSkewed();
+   } else {
+      //do nothing
+      score = round;
    }
 }
 function startGame()
