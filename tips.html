@@ -115,11 +115,11 @@
     function randomization() {
             var randomCondition = -1;
 
-            randomCondition = ( Math.floor(Math.random() * (8 - 0 +1)) + 0 );
+            //randomCondition = ( Math.floor(Math.random() * (8 - 0 +1)) + 0 );
 
              // simple hack to narrow random assignment
-             // var pickOne = [4];
-             //  randomCondition = pickOne[Math.floor(Math.random() * pickOne.length)];
+              var pickOne = [4];
+              randomCondition = pickOne[Math.floor(Math.random() * pickOne.length)];
 
             localStorage.setItem('condition',(randomCondition));
 
