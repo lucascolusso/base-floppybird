@@ -4,11 +4,13 @@ var high = 17;
 var max = 196;
 
 var userCondition = function() {};
-var leaderBarName = 'Leader'
+var leaderBarName = 'Leader';
 var leaderBarColor = '#f8704f';
 var userBarColor = '#36d77a';
 var conditions;
 var graphScore;
+var parameter = 'Score';
+var userBarName = 'Your score';
 
 //conditions logic
 conditions = {
@@ -20,7 +22,7 @@ conditions = {
       credits: { enabled: false },
       xAxis: { type: 'category' },
       yAxis: {
-        title: { text: 'Score' },
+        title: { text: parameter },
         gridLineWidth: 0,
         minorGridLineWidth: 0,
         labels: { enabled: false }
@@ -34,7 +36,7 @@ conditions = {
         name: 'Score',
         colorByPoint: true,
         data: [
-          { name: 'Your score', color: userBarColor, y: score },
+          { name: userBarName, color: userBarColor, y: score },
           { name: leaderBarName, color: leaderBarColor, y: targetScore }
         ],
         dataLabels: { enabled: true, style: { fontSize: '13px' } }
@@ -47,7 +49,7 @@ conditions = {
       credits: { enabled: false },
       xAxis: { type: 'category' },
       yAxis: {
-        title: { text: 'Score' },
+        title: { text: parameter },
         gridLineWidth: 0,
         minorGridLineWidth: 0,
         labels: { enabled: false }
@@ -61,7 +63,7 @@ conditions = {
         name: 'Score',
         colorByPoint: true,
         data: [
-          { name: 'Your score', color: userBarColor, y: score },
+          { name: userBarName, color: userBarColor, y: score },
           { name: leaderBarName, color: leaderBarColor, y: targetScore }
         ],
         dataLabels: { enabled: true, style: { fontSize: '13px' } }

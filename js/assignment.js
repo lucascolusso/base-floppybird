@@ -30,7 +30,6 @@ function assignment () {
       userCondition = conditions.nonSkewed;
       break;
     case 1:
-      //conditions.fix();
       conditions.comparison.high();
       userCondition = conditions.nonskewed;
       break;
@@ -46,17 +45,20 @@ function assignment () {
       conditions.comparison.leader();
       userCondition = conditions.nonSkewed;
       parameter = 'Rounds';
+      userBarName = "Rounds you've played";
       break;
     case 4:
       conditions.comparison.high();
       userCondition = conditions.skewed;
       parameter = 'Rounds';
+      userBarName = "Rounds you've played";
       break;
     case 5:
       conditions.comparison.median();
       userCondition = conditions.nonSkewed;
       parameter = 'Rounds';
-      document.getElementById("target-txt").textContent = "Highest score among similar players:";
+      userBarName = "Rounds you've played";
+      //document.getElementById("target-txt").textContent = "Highest score among similar players:";
       break;
   }
 }
