@@ -15,6 +15,7 @@ var score = -1;
 var targetScore = -1;
 var highscore = -1;
 var graphscore = 99;
+var rounds_played = 1;
 
 var lastScore = 0;
 var round = 0;
@@ -141,7 +142,7 @@ function updateGraph()
    conditions.nonSkewed();
    } else {
       //do nothing
-      score = round;
+      score = rounds_played;
    }
 }
 function startGame()
@@ -322,9 +323,9 @@ function setBigScore(erase)
    if(erase)
       return;
 
-   var digits = score.toString().split('');
-   for(var i = 0; i < digits.length; i++)
-      elemscore.append("<img src='assets/font_big_" + digits[i] + ".png' alt='" + digits[i] + "'>");
+        var digits = score.toString().split('');
+        for(var i = 0; i < digits.length; i++)
+           elemscore.append("<img src='assets/font_big_" + digits[i] + ".png' alt='" + digits[i] + "'>");
 }
 
 function setSmallScore()
@@ -341,8 +342,17 @@ function setHighScore()
   var elemscore = $('#comparison-score');
   elemscore.empty();
 
-  elemscore = targetScore.toString();
-  $(document.getElementById('comparison-score').textContent=elemscore);
+  if (condition == 0 || condition == 1 || condition == 2) {
+    elemscore = targetScore.toString();
+    $(document.getElementById('comparison-score').textContent=elemscore);
+    return;
+  } else {
+    document.getElementById('target-txt').textContent= "Number of rounds the leader played:";
+
+    elemscore = targetScore.toString();
+    $(document.getElementById('comparison-score').textContent=elemscore);
+    return;
+  }
 }
 
 function setYourHighScore()
@@ -352,6 +362,11 @@ function setYourHighScore()
 
   elemscore = highscore.toString();
   $(document.getElementById('your-high-score').textContent=elemscore);
+
+  if (condition == 3 || condition == 4 || condition == 5) {
+    var row = document.getElementById('delete');
+    row.parentNode.removeChild(row);
+  }
 }
 
 // show the scores and the feedback
@@ -359,6 +374,7 @@ function showScore()
 {
    lastScore = score;
    round++;
+   rounds_played++;
    end_play = new Date();
 
    //have they beaten the high score?

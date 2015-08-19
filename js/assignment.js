@@ -36,7 +36,6 @@ function assignment () {
     case 2:
       conditions.comparison.median();
       userCondition = conditions.nonSkewed;
-      document.getElementById("target-txt").textContent = "Highest score among similar players:";
       break;
 
 
@@ -49,7 +48,7 @@ function assignment () {
       break;
     case 4:
       conditions.comparison.high();
-      userCondition = conditions.skewed;
+      userCondition = conditions.nonSkewed;
       parameter = 'Rounds';
       userBarName = "Rounds you've played";
       break;
@@ -58,7 +57,6 @@ function assignment () {
       userCondition = conditions.nonSkewed;
       parameter = 'Rounds';
       userBarName = "Rounds you've played";
-      //document.getElementById("target-txt").textContent = "Highest score among similar players:";
       break;
   }
 }
