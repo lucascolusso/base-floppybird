@@ -15,7 +15,8 @@ var score = -1;
 var targetScore = -1;
 var highscore = -1;
 var graphscore = 99;
-var rounds_played = 1;
+var rounds_played = 0;
+var roundscore = 0;
 
 var lastScore = 0;
 var round = 0;
@@ -142,6 +143,7 @@ function updateGraph()
    conditions.nonSkewed();
    } else {
       //do nothing
+      setBigScore();
       score = rounds_played;
    }
 }
@@ -315,6 +317,7 @@ function playerJump()
    soundJump.play();
 }
 
+// work on this, weird update issue
 function setBigScore(erase)
 {
    var elemscore = $("#bigscore");
@@ -323,7 +326,7 @@ function setBigScore(erase)
    if(erase)
       return;
 
-        var digits = score.toString().split('');
+        var digits = roundscore.toString().split('');
         for(var i = 0; i < digits.length; i++)
            elemscore.append("<img src='assets/font_big_" + digits[i] + ".png' alt='" + digits[i] + "'>");
 }
@@ -335,6 +338,10 @@ function setSmallScore()
 
   elemscore = score.toString();
   $(document.getElementById('current-score').textContent=elemscore);
+
+  if (condition == 3 || condition == 4 || condition == 5) {
+    document.getElementById('you-this-round').textContent= "Rounds you've played:";
+  }
 }
 
 function setHighScore()
@@ -364,8 +371,7 @@ function setYourHighScore()
   $(document.getElementById('your-high-score').textContent=elemscore);
 
   if (condition == 3 || condition == 4 || condition == 5) {
-    var row = document.getElementById('delete');
-    row.parentNode.removeChild(row);
+     $("#delete").transition({ opacity: 0 }, 0, 'ease');
   }
 }
 
@@ -373,8 +379,6 @@ function setYourHighScore()
 function showScore()
 {
    lastScore = score;
-   round++;
-   rounds_played++;
    end_play = new Date();
 
    //have they beaten the high score?
@@ -401,11 +405,17 @@ function showScore()
   sendscore();
 
   //start the game over!
+  roundscore = 0;
   showSplash();
 });
 
 function playerDead()
 {
+  round++;
+  rounds_played++;
+
+  updateGraph();
+
    //stop animating everything!
    $(".animated").css('animation-play-state', 'paused');
    $(".animated").css('-webkit-animation-play-state', 'paused');
@@ -452,6 +462,7 @@ function playerDead()
 function playerScore()
 {
    score += 1;
+   roundscore++;
    //play score sound
    soundScore.stop();
    soundScore.play();

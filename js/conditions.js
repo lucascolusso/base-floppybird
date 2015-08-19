@@ -11,6 +11,7 @@ var conditions;
 var graphScore;
 var parameter = 'Score';
 var userBarName = 'Your score';
+var condition;
 
 //conditions logic
 conditions = {
@@ -81,15 +82,37 @@ conditions = {
       targetScore = median;
     }
   },
+
   userLeader: function() {
-    if(score > targetScore) {
+    if ((condition == 0 || condition == 1 || condition == 2) && (score > targetScore)) {
+        $("#erase-if-leader").hide();
+        $("#leader-feedback").show();
 
-      $("#erase-if-leader").hide();
-      $("#leader-feedback").show();
+        targetScore = score;
+        leaderBarColor = userBarColor;
+        leaderBarName = 'Your best score';
+        return;
+    } else if ((condition == 3 || condition == 4 || condition == 5) && (round > targetScore)) {
+        $("#erase-if-leader").hide();
+        $("#leader-feedback").show();
 
-      targetScore = score;
-      leaderBarColor = userBarColor;
-      leaderBarName = 'Your best';
+      //  targetScore = round;
+      //  leaderBarColor = userBarColor;
+      //  leaderBarName = "Rounds you've played";
+        document.getElementById('leader-feedback').textContent= "You've played more rounds than the leader!";
+      return;
     }
   }
 }
+
+  // userLeader: function() {
+  //   if(score > targetScore) {
+  //
+  //     $("#erase-if-leader").hide();
+  //     $("#leader-feedback").show();
+  //
+  //     targetScore = score;
+  //     leaderBarColor = userBarColor;
+  //     leaderBarName = 'Your best';
+  //   }
+  // }
